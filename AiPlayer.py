@@ -8,6 +8,7 @@ class AiPlayer(PcRandomPlayer):
     def __init__(self, name, player_goal):
         super().__init__(self, name, player_goal)
         self.model = Network()
+        self.moves = []
 
 
     def decode_sign(self, sign):
@@ -54,18 +55,40 @@ class PlayerTrainer(AiPlayer):
     def set_trainer_lr(self, lr):
         self.trainer.set_lr(lr)
 
-    def generate_move(self, board_combinations):
-        self.board_states.append(board_combinations.state())
+    def add_move_data(self, board_state, move):
+        self.board_states.append(board_state)
+        self.moves.append(move)
 
-        super().generate_move(board_combinations)
-        self
+    def reset_moves_data(self):
+        self.board_states = []
+        self.moves = []
+
+    
+
 class OrderTrainer(AiPlayer):
     def __init__(self):
         super().__init__('Order Trainer', 'order')
 
+    def train(self, game_winner, moves_number):
+        
+        if game_winner == 'chaos':
+            reward = -0.5
+        if game_winner == 'order':
+            reward = 8 - moves_number*0.1
+        
+        self.trainer.train_step(self.board_states, self.moves, reward)
+        
 
 
 class ChaosTrainer(AiPlayer):
     def __init__(self):
         super().__init__('Chaos Trainer', 'chaos')
 
+    def train(self, game_winner, moves_number):
+        
+        if game_winner == 'order':
+            reward = -0.5
+        if game_winner == 'chaos':
+            reward = 8 - moves_number*0.1
+
+        self.trainer.train_step(self.board_states, self.moves, reward)
