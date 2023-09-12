@@ -28,15 +28,14 @@ class AiPlayer(PcRandomPlayer):
             return 'x'
         if sign_num == 2:
             return 'o'
-        else:
-            raise WrongSignError
+
 
     def generate_move(self, board_combinations):
         """Generate next move on board based on network prediction"""
         board_state = list(map(self.decode_sign, board_combinations.state()))
         board_state = torch.tensor(board_state).flatten()
         prediction = self.model(board_state)
-        max_pred = prediction.argmax()
+        max_pred = prediction.argmax().item()
         sign = self.encode_sign(max_pred//36 + 1)
         row = (max_pred%36)//6
         column = (max_pred%36)%6
@@ -57,6 +56,7 @@ class PlayerTrainer(AiPlayer):
 
     def add_move_data(self, board_state, move):
         self.board_states.append(board_state)
+        move[2] = self.encode_sign(move[2])
         self.moves.append(move)
 
     def reset_moves_data(self):
@@ -76,7 +76,8 @@ class OrderTrainer(AiPlayer):
         if game_winner == 'order':
             reward = 8 - moves_number*0.1
         
-        self.trainer.train_step(self.board_states, self.moves, reward)
+        
+        self.trainer.train_step(list(map(self.encode_sign, self.board_states)), self.moves, reward)
         
 
 

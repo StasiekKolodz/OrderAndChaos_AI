@@ -1,4 +1,5 @@
 from classes import *
+from AiPlayer import OrderTrainer, ChaosTrainer
 
 class Game:
     """
