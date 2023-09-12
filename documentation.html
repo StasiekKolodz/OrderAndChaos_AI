@@ -1,0 +1,949 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module classes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>classes</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/stas/PIPR_Projekt_1/classes.py">/home/stas/PIPR_Projekt_1/classes.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#993441">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#993441"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="random.html">random</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#0e387a">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#0e387a"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#Exception">builtins.Exception</a>(<a href="builtins.html#BaseException">builtins.BaseException</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="classes.html#FieldNotOnBoardError">FieldNotOnBoardError</a>
+</font></dt><dt><font face="helvetica, arial"><a href="classes.html#InvalidPlayerData">InvalidPlayerData</a>
+</font></dt><dt><font face="helvetica, arial"><a href="classes.html#OccupiedFieldEror">OccupiedFieldEror</a>
+</font></dt><dt><font face="helvetica, arial"><a href="classes.html#WrongFieldDataError">WrongFieldDataError</a>
+</font></dt><dt><font face="helvetica, arial"><a href="classes.html#WrongFieldError">WrongFieldError</a>
+</font></dt><dt><font face="helvetica, arial"><a href="classes.html#WrongSignError">WrongSignError</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="classes.html#BoardCombinations">BoardCombinations</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="classes.html#Board">Board</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="classes.html#Game">Game</a>
+</font></dt><dt><font face="helvetica, arial"><a href="classes.html#Player">Player</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="classes.html#PcRandomPlayer">PcRandomPlayer</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="classes.html#PcPlayer">PcPlayer</a>
+</font></dt></dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="enum.html#Enum">enum.Enum</a>(<a href="builtins.html#object">builtins.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="classes.html#Direction">Direction</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#9fafca">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Board">class <strong>Board</strong></a>(<a href="classes.html#BoardCombinations">BoardCombinations</a>)</font></td></tr>
+    
+<tr bgcolor="#9fafca"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Board">Board</a>(board_state=None)<br>
+&nbsp;<br>
+Klasa&nbsp;<a href="#Board">Board</a>&nbsp;dziedziczy&nbsp;po&nbsp;<a href="#BoardCombinations">BoardCombinations</a>.<br>
+reprezentuje&nbsp;ona&nbsp;polanszę&nbsp;6x6&nbsp;gry&nbsp;i&nbsp;wykorzystana&nbsp;jest&nbsp;w&nbsp;wizualnym<br>
+interfejsie&nbsp;urzytkownika.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="classes.html#Board">Board</a></dd>
+<dd><a href="classes.html#BoardCombinations">BoardCombinations</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Board-board_print"><strong>board_print</strong></a>(self)</dt><dd><tt>Funkcja&nbsp;wypisuje&nbsp;stan&nbsp;planszy&nbsp;na&nbsp;ekran&nbsp;w&nbsp;formie&nbsp;tabeli.<br>
+Tabela&nbsp;tworzona&nbsp;jest&nbsp;przy&nbsp;pomocy&nbsp;biblioteki&nbsp;tabulate<br>
+w&nbsp;formacie&nbsp;fancy_grid.<br>
+Nagłówek&nbsp;tabeli&nbsp;to&nbsp;kolejne&nbsp;liczby&nbsp;od&nbsp;0&nbsp;do&nbsp;5,<br>
+a&nbsp;indeksowanie&nbsp;wierszy&nbsp;jest&nbsp;włączone&nbsp;(od&nbsp;0&nbsp;do&nbsp;5)</tt></dd></dl>
+
+<dl><dt><a name="Board-put"><strong>put</strong></a>(self, sign, row, column)</dt><dd><tt>Funkcja&nbsp;przyjmuje&nbsp;współżędne&nbsp;pola&nbsp;oraz&nbsp;jego&nbsp;znak,<br>
+a&nbsp;następnie&nbsp;wstawia&nbsp;ten&nbsp;znak&nbsp;na&nbsp;podane&nbsp;pole.<br>
+Może&nbsp;ona&nbsp;wznośić&nbsp;następujące&nbsp;wyjątki:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;WrongFieldData&nbsp;gdy&nbsp;któraś&nbsp;współżędna&nbsp;pola&nbsp;nie&nbsp;jest&nbsp;liczbą<br>
+&nbsp;&nbsp;&nbsp;&nbsp;FieldNotOnBoard&nbsp;gdy&nbsp;podane&nbsp;pole&nbsp;nie&nbsp;znajduje&nbsp;się&nbsp;na&nbsp;planszy<br>
+&nbsp;&nbsp;&nbsp;&nbsp;OccupiedFieldError&nbsp;gdy&nbsp;podane&nbsp;pole&nbsp;nie&nbsp;jest&nbsp;pustego<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Wrong&nbsp;sign&nbsp;error&nbsp;gdy&nbsp;podany&nbsp;znak&nbsp;nie&nbsp;jest&nbsp;X&nbsp;lub&nbsp;O</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="classes.html#BoardCombinations">BoardCombinations</a>:<br>
+<dl><dt><a name="Board-O_combination_update"><strong>O_combination_update</strong></a>(self, row_number, column_number, direction, previous_O_count)</dt><dd><tt>Funkcja&nbsp;dodaje&nbsp;kombinacje&nbsp;znaków&nbsp;O&nbsp;do&nbsp;O_combinations,<br>
+jeśli&nbsp;dana&nbsp;kombinacja&nbsp;skończyła&nbsp;się&nbsp;poprzez&nbsp;wystąpienie<br>
+pustego&nbsp;pola&nbsp;lub&nbsp;przeciwnego&nbsp;znaku&nbsp;na&nbsp;następnym&nbsp;polu.<br>
+Kombinacja&nbsp;znaków&nbsp;jest&nbsp;reprezentowana&nbsp;przez<br>
+długość&nbsp;kombinacji,&nbsp;wiersz&nbsp;i&nbsp;kolumnę&nbsp;zakończenia&nbsp;kombinacji<br>
+oraz&nbsp;jej&nbsp;kierunek.</tt></dd></dl>
+
+<dl><dt><a name="Board-O_combination_update_edge"><strong>O_combination_update_edge</strong></a>(self, row_number, column_number, direction)</dt><dd><tt>Funkcja&nbsp;dodaje&nbsp;kombinacje&nbsp;znaków&nbsp;O&nbsp;do&nbsp;O_combinations,<br>
+jeśli&nbsp;dana&nbsp;kombinacja&nbsp;dotarła&nbsp;do&nbsp;krawędzi&nbsp;planszy<br>
+(następne&nbsp;pole&nbsp;byłoby&nbsp;poza&nbsp;planszą).<br>
+Kombinacja&nbsp;znaków&nbsp;jest&nbsp;reprezentowana&nbsp;przez<br>
+długość&nbsp;kombinacji,&nbsp;wiersz&nbsp;i&nbsp;kolumnę&nbsp;zakończenia&nbsp;kombinacji<br>
+oraz&nbsp;jej&nbsp;kierunek.</tt></dd></dl>
+
+<dl><dt><a name="Board-O_counter"><strong>O_counter</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Board-X_combination_update"><strong>X_combination_update</strong></a>(self, row_number, column_number, direction, previous_X_count)</dt><dd><tt>Funkcja&nbsp;dodaje&nbsp;kombinacje&nbsp;znaków&nbsp;X&nbsp;do&nbsp;X_combinations,<br>
+jeśli&nbsp;dana&nbsp;kombinacja&nbsp;skończyła&nbsp;się&nbsp;poprzez&nbsp;wystąpienie<br>
+pustego&nbsp;pola&nbsp;lub&nbsp;przeciwnego&nbsp;znaku&nbsp;na&nbsp;następnym&nbsp;polu.<br>
+Kombinacja&nbsp;znaków&nbsp;jest&nbsp;reprezentowana&nbsp;przez<br>
+długość&nbsp;kombinacji,&nbsp;wiersz&nbsp;i&nbsp;kolumnę&nbsp;zakończenia&nbsp;kombinacji<br>
+oraz&nbsp;jej&nbsp;kierunek.</tt></dd></dl>
+
+<dl><dt><a name="Board-X_combination_update_edge"><strong>X_combination_update_edge</strong></a>(self, row_number, column_number, direction)</dt><dd><tt>Funkcja&nbsp;dodaje&nbsp;kombinacje&nbsp;znaków&nbsp;X&nbsp;do&nbsp;X_combinations,<br>
+jeśli&nbsp;dana&nbsp;kombinacja&nbsp;dotarła&nbsp;do&nbsp;krawędzi&nbsp;planszy<br>
+(następne&nbsp;pole&nbsp;byłoby&nbsp;poza&nbsp;planszą).<br>
+Kombinacja&nbsp;znaków&nbsp;jest&nbsp;reprezentowana&nbsp;przez<br>
+długość&nbsp;kombinacji,&nbsp;wiersz&nbsp;i&nbsp;kolumnę&nbsp;zakończenia&nbsp;kombinacji<br>
+oraz&nbsp;jej&nbsp;kierunek.</tt></dd></dl>
+
+<dl><dt><a name="Board-X_counter"><strong>X_counter</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Board-__init__"><strong>__init__</strong></a>(self, board_state=None)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Board-combinations_counter_update"><strong>combinations_counter_update</strong></a>(self, sign, row_number, column_number, direction)</dt><dd><tt>Funkcja&nbsp;aktualizuje&nbsp;wartość&nbsp;liczników&nbsp;długości&nbsp;kombinacji<br>
+O_counter&nbsp;i&nbsp;X_counter.<br>
+Jeśli&nbsp;znak&nbsp;na&nbsp;polu&nbsp;to&nbsp;X&nbsp;licznik&nbsp;X_counter&nbsp;ziększa&nbsp;się&nbsp;o&nbsp;1<br>
+(wydłużenie&nbsp;kombuinacji&nbsp;X&nbsp;o&nbsp;1),<br>
+a&nbsp;licznik&nbsp;O_counter&nbsp;jest&nbsp;wyzerowany&nbsp;(zakończenie<br>
+lub&nbsp;podtrzymanie&nbsp;braku&nbsp;kombinacji&nbsp;O),&nbsp;analogicznie&nbsp;dla&nbsp;pola&nbsp;o&nbsp;znaku&nbsp;O.<br>
+Gdy&nbsp;pole&nbsp;jest&nbsp;puste&nbsp;oba&nbsp;liczniki&nbsp;są&nbsp;wyzerowane&nbsp;ponieważ,<br>
+oznacza&nbsp;to&nbsp;zakończenie&nbsp;lub&nbsp;brak&nbsp;kombinacji.<br>
+Wartości&nbsp;liczników&nbsp;przekazane&nbsp;są&nbsp;do&nbsp;funkcji&nbsp;aktualizującej&nbsp;kombinacje.</tt></dd></dl>
+
+<dl><dt><a name="Board-find_combinations"><strong>find_combinations</strong></a>(self)</dt><dd><tt>Funkcja&nbsp;dokonuje&nbsp;skanowania&nbsp;po&nbsp;kolejnych&nbsp;wierszach,<br>
+kolumnach&nbsp;i&nbsp;ukosach&nbsp;planszy&nbsp;wywołując&nbsp;aktualizacje&nbsp;liczników<br>
+kombinacji&nbsp;dla&nbsp;każdego&nbsp;napotkanego&nbsp;pola.<br>
+Skanowanie&nbsp;odbywa&nbsp;się&nbsp;od&nbsp;lewej&nbsp;do&nbsp;prawej<br>
+Skanowanie&nbsp;odbywa&nbsp;się&nbsp;kolejno&nbsp;po:<br>
+Wierszach<br>
+Kolumnach<br>
+Krótkich&nbsp;przekątnych&nbsp;skierowanych&nbsp;do&nbsp;góry&nbsp;(diagonally_short_up):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Są&nbsp;to&nbsp;dwie&nbsp;przekątne&nbsp;o&nbsp;długości&nbsp;4&nbsp;pola,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pierwsza&nbsp;z&nbsp;początkiem&nbsp;na&nbsp;polu&nbsp;(4,0)&nbsp;i&nbsp;końcem&nbsp;(0,4),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;druga&nbsp;z&nbsp;&nbsp;początkiem&nbsp;na&nbsp;(5,1)&nbsp;i&nbsp;końcem&nbsp;(1,5)<br>
+Krótkich&nbsp;przekątnych&nbsp;skierowanych&nbsp;do&nbsp;dołu&nbsp;(diagonally_short_down):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Są&nbsp;to&nbsp;dwie&nbsp;przekątne&nbsp;o&nbsp;długości&nbsp;4&nbsp;pola,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pierwsza&nbsp;z&nbsp;początkiem&nbsp;na&nbsp;polu&nbsp;(0,1)&nbsp;i&nbsp;końcem&nbsp;(4,5),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;druga&nbsp;z&nbsp;&nbsp;początkiem&nbsp;na&nbsp;(1,0)&nbsp;i&nbsp;końcem&nbsp;(5,4)<br>
+Długiej&nbsp;przekątnej&nbsp;skierowanej&nbsp;do&nbsp;góry&nbsp;(diagonally_long_up):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Przekątna&nbsp;o&nbsp;długości&nbsp;5&nbsp;pól&nbsp;z&nbsp;początkiem&nbsp;na&nbsp;polu&nbsp;(5,0)&nbsp;i&nbsp;końcem&nbsp;(0,5)<br>
+Długiej&nbsp;przekątnej&nbsp;skierowanej&nbsp;do&nbsp;dołu&nbsp;(diagonally_long_down):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Przekątna&nbsp;o&nbsp;długości&nbsp;5&nbsp;pól&nbsp;z&nbsp;początkiem&nbsp;na&nbsp;polu&nbsp;(0,0)&nbsp;i&nbsp;końcem&nbsp;(5,5)</tt></dd></dl>
+
+<dl><dt><a name="Board-is_5_combination_possible"><strong>is_5_combination_possible</strong></a>(self, chosen_comb, field)</dt></dl>
+
+<dl><dt><a name="Board-is_field_empty_and_on_board"><strong>is_field_empty_and_on_board</strong></a>(self, field)</dt><dd><tt>Przyjmuje&nbsp;współżędne&nbsp;pola&nbsp;na&nbsp;planszy&nbsp;(wiersz&nbsp;i&nbsp;kolumnę)<br>
+Sprawdza&nbsp;czy&nbsp;pole&nbsp;jest&nbsp;puste&nbsp;i&nbsp;czy&nbsp;jest&nbsp;na&nbsp;planszy</tt></dd></dl>
+
+<dl><dt><a name="Board-is_full"><strong>is_full</strong></a>(self)</dt><dd><tt>Sprawdza&nbsp;czy&nbsp;plansza&nbsp;jest&nbsp;pełna</tt></dd></dl>
+
+<dl><dt><a name="Board-is_win_order"><strong>is_win_order</strong></a>(self)</dt><dd><tt>Sprawdza&nbsp;czy&nbsp;porządek&nbsp;zwycięrzył<br>
+(Czy&nbsp;jest&nbsp;na&nbsp;planszy&nbsp;kombinacja&nbsp;o&nbsp;długości&nbsp;5)</tt></dd></dl>
+
+<dl><dt><a name="Board-move_with_5_comb"><strong>move_with_5_comb</strong></a>(self, chosen_comb, first_field, second_field, order_factor)</dt><dd><tt>Funkcja&nbsp;sprawdza&nbsp;czy&nbsp;podane&nbsp;pola&nbsp;są&nbsp;na&nbsp;planszy&nbsp;i&nbsp;czy&nbsp;w&nbsp;lini<br>
+określonej&nbsp;przez&nbsp;wybraną&nbsp;kombinację&nbsp;(chosen_comb)&nbsp;możliwe&nbsp;jest&nbsp;stworzenie<br>
+kombinacji&nbsp;o&nbsp;długości&nbsp;5&nbsp;znaków&nbsp;(określonych&nbsp;przez&nbsp;znak&nbsp;kombinacji)<br>
+Dodatkowo&nbsp;warunkiem&nbsp;sprawdzenia&nbsp;pierwszego&nbsp;pola<br>
+jest&nbsp;bool(order_factor)&nbsp;==&nbsp;True.</tt></dd></dl>
+
+<dl><dt><a name="Board-set_board_state"><strong>set_board_state</strong></a>(self, board_state)</dt></dl>
+
+<dl><dt><a name="Board-state"><strong>state</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="classes.html#BoardCombinations">BoardCombinations</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#9fafca">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="BoardCombinations">class <strong>BoardCombinations</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#9fafca"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#BoardCombinations">BoardCombinations</a>(board_state=None)<br>
+&nbsp;<br>
+Klasa&nbsp;reprezentująca&nbsp;planszę&nbsp;6x6&nbsp;wykorzystywaną&nbsp;w&nbsp;grze<br>
+w&nbsp;celach&nbsp;analizy&nbsp;zawartości&nbsp;planszy&nbsp;w&nbsp;trakcie&nbsp;rozgrywki.<br>
+Puste&nbsp;pola&nbsp;są&nbsp;w&nbsp;niej&nbsp;reprezentowane&nbsp;znakiem&nbsp;'-'<br>
+Domyślnie&nbsp;tworzona&nbsp;jako&nbsp;pusta&nbsp;plansza.<br>
+Atrybuty&nbsp;klasy:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;X_combinations:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kombinacje&nbsp;złożone&nbsp;z&nbsp;X&nbsp;na&nbsp;planszy<br>
+&nbsp;&nbsp;&nbsp;&nbsp;O_combinations:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kombinacje&nbsp;złożone&nbsp;z&nbsp;O&nbsp;na&nbsp;planszy<br>
+&nbsp;&nbsp;&nbsp;&nbsp;X_counter:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Licznik&nbsp;długości&nbsp;kombinacji&nbsp;z&nbsp;X<br>
+&nbsp;&nbsp;&nbsp;&nbsp;O_counter:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Licznik&nbsp;długości&nbsp;kombinacji&nbsp;z&nbsp;O<br>
+&nbsp;&nbsp;&nbsp;&nbsp;state:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stan&nbsp;(zawartość)&nbsp;planszy&nbsp;reprezentowany&nbsp;przez&nbsp;macierz&nbsp;(listę)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pola&nbsp;reprezentowane&nbsp;są&nbsp;wierszem&nbsp;i&nbsp;kolumną&nbsp;stanu&nbsp;planszy<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="BoardCombinations-O_combination_update"><strong>O_combination_update</strong></a>(self, row_number, column_number, direction, previous_O_count)</dt><dd><tt>Funkcja&nbsp;dodaje&nbsp;kombinacje&nbsp;znaków&nbsp;O&nbsp;do&nbsp;O_combinations,<br>
+jeśli&nbsp;dana&nbsp;kombinacja&nbsp;skończyła&nbsp;się&nbsp;poprzez&nbsp;wystąpienie<br>
+pustego&nbsp;pola&nbsp;lub&nbsp;przeciwnego&nbsp;znaku&nbsp;na&nbsp;następnym&nbsp;polu.<br>
+Kombinacja&nbsp;znaków&nbsp;jest&nbsp;reprezentowana&nbsp;przez<br>
+długość&nbsp;kombinacji,&nbsp;wiersz&nbsp;i&nbsp;kolumnę&nbsp;zakończenia&nbsp;kombinacji<br>
+oraz&nbsp;jej&nbsp;kierunek.</tt></dd></dl>
+
+<dl><dt><a name="BoardCombinations-O_combination_update_edge"><strong>O_combination_update_edge</strong></a>(self, row_number, column_number, direction)</dt><dd><tt>Funkcja&nbsp;dodaje&nbsp;kombinacje&nbsp;znaków&nbsp;O&nbsp;do&nbsp;O_combinations,<br>
+jeśli&nbsp;dana&nbsp;kombinacja&nbsp;dotarła&nbsp;do&nbsp;krawędzi&nbsp;planszy<br>
+(następne&nbsp;pole&nbsp;byłoby&nbsp;poza&nbsp;planszą).<br>
+Kombinacja&nbsp;znaków&nbsp;jest&nbsp;reprezentowana&nbsp;przez<br>
+długość&nbsp;kombinacji,&nbsp;wiersz&nbsp;i&nbsp;kolumnę&nbsp;zakończenia&nbsp;kombinacji<br>
+oraz&nbsp;jej&nbsp;kierunek.</tt></dd></dl>
+
+<dl><dt><a name="BoardCombinations-O_counter"><strong>O_counter</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BoardCombinations-X_combination_update"><strong>X_combination_update</strong></a>(self, row_number, column_number, direction, previous_X_count)</dt><dd><tt>Funkcja&nbsp;dodaje&nbsp;kombinacje&nbsp;znaków&nbsp;X&nbsp;do&nbsp;X_combinations,<br>
+jeśli&nbsp;dana&nbsp;kombinacja&nbsp;skończyła&nbsp;się&nbsp;poprzez&nbsp;wystąpienie<br>
+pustego&nbsp;pola&nbsp;lub&nbsp;przeciwnego&nbsp;znaku&nbsp;na&nbsp;następnym&nbsp;polu.<br>
+Kombinacja&nbsp;znaków&nbsp;jest&nbsp;reprezentowana&nbsp;przez<br>
+długość&nbsp;kombinacji,&nbsp;wiersz&nbsp;i&nbsp;kolumnę&nbsp;zakończenia&nbsp;kombinacji<br>
+oraz&nbsp;jej&nbsp;kierunek.</tt></dd></dl>
+
+<dl><dt><a name="BoardCombinations-X_combination_update_edge"><strong>X_combination_update_edge</strong></a>(self, row_number, column_number, direction)</dt><dd><tt>Funkcja&nbsp;dodaje&nbsp;kombinacje&nbsp;znaków&nbsp;X&nbsp;do&nbsp;X_combinations,<br>
+jeśli&nbsp;dana&nbsp;kombinacja&nbsp;dotarła&nbsp;do&nbsp;krawędzi&nbsp;planszy<br>
+(następne&nbsp;pole&nbsp;byłoby&nbsp;poza&nbsp;planszą).<br>
+Kombinacja&nbsp;znaków&nbsp;jest&nbsp;reprezentowana&nbsp;przez<br>
+długość&nbsp;kombinacji,&nbsp;wiersz&nbsp;i&nbsp;kolumnę&nbsp;zakończenia&nbsp;kombinacji<br>
+oraz&nbsp;jej&nbsp;kierunek.</tt></dd></dl>
+
+<dl><dt><a name="BoardCombinations-X_counter"><strong>X_counter</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BoardCombinations-__init__"><strong>__init__</strong></a>(self, board_state=None)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="BoardCombinations-combinations_counter_update"><strong>combinations_counter_update</strong></a>(self, sign, row_number, column_number, direction)</dt><dd><tt>Funkcja&nbsp;aktualizuje&nbsp;wartość&nbsp;liczników&nbsp;długości&nbsp;kombinacji<br>
+O_counter&nbsp;i&nbsp;X_counter.<br>
+Jeśli&nbsp;znak&nbsp;na&nbsp;polu&nbsp;to&nbsp;X&nbsp;licznik&nbsp;X_counter&nbsp;ziększa&nbsp;się&nbsp;o&nbsp;1<br>
+(wydłużenie&nbsp;kombuinacji&nbsp;X&nbsp;o&nbsp;1),<br>
+a&nbsp;licznik&nbsp;O_counter&nbsp;jest&nbsp;wyzerowany&nbsp;(zakończenie<br>
+lub&nbsp;podtrzymanie&nbsp;braku&nbsp;kombinacji&nbsp;O),&nbsp;analogicznie&nbsp;dla&nbsp;pola&nbsp;o&nbsp;znaku&nbsp;O.<br>
+Gdy&nbsp;pole&nbsp;jest&nbsp;puste&nbsp;oba&nbsp;liczniki&nbsp;są&nbsp;wyzerowane&nbsp;ponieważ,<br>
+oznacza&nbsp;to&nbsp;zakończenie&nbsp;lub&nbsp;brak&nbsp;kombinacji.<br>
+Wartości&nbsp;liczników&nbsp;przekazane&nbsp;są&nbsp;do&nbsp;funkcji&nbsp;aktualizującej&nbsp;kombinacje.</tt></dd></dl>
+
+<dl><dt><a name="BoardCombinations-find_combinations"><strong>find_combinations</strong></a>(self)</dt><dd><tt>Funkcja&nbsp;dokonuje&nbsp;skanowania&nbsp;po&nbsp;kolejnych&nbsp;wierszach,<br>
+kolumnach&nbsp;i&nbsp;ukosach&nbsp;planszy&nbsp;wywołując&nbsp;aktualizacje&nbsp;liczników<br>
+kombinacji&nbsp;dla&nbsp;każdego&nbsp;napotkanego&nbsp;pola.<br>
+Skanowanie&nbsp;odbywa&nbsp;się&nbsp;od&nbsp;lewej&nbsp;do&nbsp;prawej<br>
+Skanowanie&nbsp;odbywa&nbsp;się&nbsp;kolejno&nbsp;po:<br>
+Wierszach<br>
+Kolumnach<br>
+Krótkich&nbsp;przekątnych&nbsp;skierowanych&nbsp;do&nbsp;góry&nbsp;(diagonally_short_up):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Są&nbsp;to&nbsp;dwie&nbsp;przekątne&nbsp;o&nbsp;długości&nbsp;4&nbsp;pola,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pierwsza&nbsp;z&nbsp;początkiem&nbsp;na&nbsp;polu&nbsp;(4,0)&nbsp;i&nbsp;końcem&nbsp;(0,4),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;druga&nbsp;z&nbsp;&nbsp;początkiem&nbsp;na&nbsp;(5,1)&nbsp;i&nbsp;końcem&nbsp;(1,5)<br>
+Krótkich&nbsp;przekątnych&nbsp;skierowanych&nbsp;do&nbsp;dołu&nbsp;(diagonally_short_down):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Są&nbsp;to&nbsp;dwie&nbsp;przekątne&nbsp;o&nbsp;długości&nbsp;4&nbsp;pola,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pierwsza&nbsp;z&nbsp;początkiem&nbsp;na&nbsp;polu&nbsp;(0,1)&nbsp;i&nbsp;końcem&nbsp;(4,5),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;druga&nbsp;z&nbsp;&nbsp;początkiem&nbsp;na&nbsp;(1,0)&nbsp;i&nbsp;końcem&nbsp;(5,4)<br>
+Długiej&nbsp;przekątnej&nbsp;skierowanej&nbsp;do&nbsp;góry&nbsp;(diagonally_long_up):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Przekątna&nbsp;o&nbsp;długości&nbsp;5&nbsp;pól&nbsp;z&nbsp;początkiem&nbsp;na&nbsp;polu&nbsp;(5,0)&nbsp;i&nbsp;końcem&nbsp;(0,5)<br>
+Długiej&nbsp;przekątnej&nbsp;skierowanej&nbsp;do&nbsp;dołu&nbsp;(diagonally_long_down):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Przekątna&nbsp;o&nbsp;długości&nbsp;5&nbsp;pól&nbsp;z&nbsp;początkiem&nbsp;na&nbsp;polu&nbsp;(0,0)&nbsp;i&nbsp;końcem&nbsp;(5,5)</tt></dd></dl>
+
+<dl><dt><a name="BoardCombinations-is_5_combination_possible"><strong>is_5_combination_possible</strong></a>(self, chosen_comb, field)</dt></dl>
+
+<dl><dt><a name="BoardCombinations-is_field_empty_and_on_board"><strong>is_field_empty_and_on_board</strong></a>(self, field)</dt><dd><tt>Przyjmuje&nbsp;współżędne&nbsp;pola&nbsp;na&nbsp;planszy&nbsp;(wiersz&nbsp;i&nbsp;kolumnę)<br>
+Sprawdza&nbsp;czy&nbsp;pole&nbsp;jest&nbsp;puste&nbsp;i&nbsp;czy&nbsp;jest&nbsp;na&nbsp;planszy</tt></dd></dl>
+
+<dl><dt><a name="BoardCombinations-is_full"><strong>is_full</strong></a>(self)</dt><dd><tt>Sprawdza&nbsp;czy&nbsp;plansza&nbsp;jest&nbsp;pełna</tt></dd></dl>
+
+<dl><dt><a name="BoardCombinations-is_win_order"><strong>is_win_order</strong></a>(self)</dt><dd><tt>Sprawdza&nbsp;czy&nbsp;porządek&nbsp;zwycięrzył<br>
+(Czy&nbsp;jest&nbsp;na&nbsp;planszy&nbsp;kombinacja&nbsp;o&nbsp;długości&nbsp;5)</tt></dd></dl>
+
+<dl><dt><a name="BoardCombinations-move_with_5_comb"><strong>move_with_5_comb</strong></a>(self, chosen_comb, first_field, second_field, order_factor)</dt><dd><tt>Funkcja&nbsp;sprawdza&nbsp;czy&nbsp;podane&nbsp;pola&nbsp;są&nbsp;na&nbsp;planszy&nbsp;i&nbsp;czy&nbsp;w&nbsp;lini<br>
+określonej&nbsp;przez&nbsp;wybraną&nbsp;kombinację&nbsp;(chosen_comb)&nbsp;możliwe&nbsp;jest&nbsp;stworzenie<br>
+kombinacji&nbsp;o&nbsp;długości&nbsp;5&nbsp;znaków&nbsp;(określonych&nbsp;przez&nbsp;znak&nbsp;kombinacji)<br>
+Dodatkowo&nbsp;warunkiem&nbsp;sprawdzenia&nbsp;pierwszego&nbsp;pola<br>
+jest&nbsp;bool(order_factor)&nbsp;==&nbsp;True.</tt></dd></dl>
+
+<dl><dt><a name="BoardCombinations-set_board_state"><strong>set_board_state</strong></a>(self, board_state)</dt></dl>
+
+<dl><dt><a name="BoardCombinations-state"><strong>state</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#9fafca">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Direction">class <strong>Direction</strong></a>(<a href="enum.html#Enum">enum.Enum</a>)</font></td></tr>
+    
+<tr bgcolor="#9fafca"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Direction">Direction</a>(value,&nbsp;names=None,&nbsp;*,&nbsp;module=None,&nbsp;qualname=None,&nbsp;type=None,&nbsp;start=1)<br>
+&nbsp;<br>
+An&nbsp;enumeration.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="classes.html#Direction">Direction</a></dd>
+<dd><a href="enum.html#Enum">enum.Enum</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>diagonally_long_down</strong> = &lt;Direction.diagonally_long_down: 'diagonally_long_down'&gt;</dl>
+
+<dl><dt><strong>diagonally_long_up</strong> = &lt;Direction.diagonally_long_up: 'diagonally_long_up'&gt;</dl>
+
+<dl><dt><strong>diagonally_short_down</strong> = &lt;Direction.diagonally_short_down: 'diagonally_short_down'&gt;</dl>
+
+<dl><dt><strong>diagonally_short_up</strong> = &lt;Direction.diagonally_short_up: 'diagonally_short_up'&gt;</dl>
+
+<dl><dt><strong>horizontally</strong> = &lt;Direction.horizontally: 'horizontally'&gt;</dl>
+
+<dl><dt><strong>vertically</strong> = &lt;Direction.vertically: 'vertically'&gt;</dl>
+
+<hr>
+Data descriptors inherited from <a href="enum.html#Enum">enum.Enum</a>:<br>
+<dl><dt><strong>name</strong></dt>
+<dd><tt>The&nbsp;name&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</tt></dd>
+</dl>
+<dl><dt><strong>value</strong></dt>
+<dd><tt>The&nbsp;value&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</tt></dd>
+</dl>
+<hr>
+Readonly properties inherited from <a href="enum.html#EnumMeta">enum.EnumMeta</a>:<br>
+<dl><dt><strong>__members__</strong></dt>
+<dd><tt>Returns&nbsp;a&nbsp;mapping&nbsp;of&nbsp;member&nbsp;name-&gt;value.<br>
+&nbsp;<br>
+This&nbsp;mapping&nbsp;lists&nbsp;all&nbsp;enum&nbsp;members,&nbsp;including&nbsp;aliases.&nbsp;Note&nbsp;that&nbsp;this<br>
+is&nbsp;a&nbsp;read-only&nbsp;view&nbsp;of&nbsp;the&nbsp;internal&nbsp;mapping.</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#9fafca">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="FieldNotOnBoardError">class <strong>FieldNotOnBoardError</strong></a>(<a href="builtins.html#Exception">builtins.Exception</a>)</font></td></tr>
+    
+<tr bgcolor="#9fafca"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Common&nbsp;base&nbsp;class&nbsp;for&nbsp;all&nbsp;non-exit&nbsp;exceptions.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="classes.html#FieldNotOnBoardError">FieldNotOnBoardError</a></dd>
+<dd><a href="builtins.html#Exception">builtins.Exception</a></dd>
+<dd><a href="builtins.html#BaseException">builtins.BaseException</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="FieldNotOnBoardError-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Static methods inherited from <a href="builtins.html#Exception">builtins.Exception</a>:<br>
+<dl><dt><a name="FieldNotOnBoardError-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><a name="FieldNotOnBoardError-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="FieldNotOnBoardError-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="FieldNotOnBoardError-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="FieldNotOnBoardError-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="FieldNotOnBoardError-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="FieldNotOnBoardError-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="FieldNotOnBoardError-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<dl><dt><a name="FieldNotOnBoardError-with_traceback"><strong>with_traceback</strong></a>(...)</dt><dd><tt><a href="builtins.html#Exception">Exception</a>.<a href="#FieldNotOnBoardError-with_traceback">with_traceback</a>(tb)&nbsp;--<br>
+set&nbsp;self.<strong>__traceback__</strong>&nbsp;to&nbsp;tb&nbsp;and&nbsp;return&nbsp;self.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><strong>__cause__</strong></dt>
+<dd><tt>exception&nbsp;cause</tt></dd>
+</dl>
+<dl><dt><strong>__context__</strong></dt>
+<dd><tt>exception&nbsp;context</tt></dd>
+</dl>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__suppress_context__</strong></dt>
+</dl>
+<dl><dt><strong>__traceback__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#9fafca">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Game">class <strong>Game</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#9fafca"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Klasa&nbsp;reprezentująca&nbsp;grę<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Game-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Inicjalizuje&nbsp;grę</tt></dd></dl>
+
+<dl><dt><a name="Game-play_game"><strong>play_game</strong></a>(self)</dt><dd><tt>Funkcja&nbsp;realizuję&nbsp;rozegranie&nbsp;całej&nbsp;gry&nbsp;poprzez&nbsp;rozpoczynanie<br>
+kolejnych&nbsp;rund&nbsp;do&nbsp;momentu<br>
+zwycięztwa&nbsp;któregoś&nbsp;z&nbsp;graczy&nbsp;lub&nbsp;decyzji&nbsp;o&nbsp;rozpoczęciu&nbsp;nowej&nbsp;gry<br>
+albo&nbsp;o&nbsp;zakończeniu&nbsp;rozgrywki.</tt></dd></dl>
+
+<dl><dt><a name="Game-play_new_game"><strong>play_new_game</strong></a>(self)</dt><dd><tt>Funkcja&nbsp;tworzy&nbsp;nową&nbsp;grę&nbsp;i&nbsp;rozpoczyna&nbsp;rozgrywkę.</tt></dd></dl>
+
+<dl><dt><a name="Game-play_round"><strong>play_round</strong></a>(self)</dt><dd><tt>Funkcja&nbsp;realizuje&nbsp;rozegranie&nbsp;rundy&nbsp;gry.<br>
+Każdą&nbsp;rundę&nbsp;rozpoczyna&nbsp;gracz&nbsp;z&nbsp;przypisanym&nbsp;celem&nbsp;porządek(order)<br>
+Obaj&nbsp;gracze&nbsp;podają&nbsp;kolejno&nbsp;poprzez&nbsp;konsolę,&nbsp;współzędne&nbsp;pola&nbsp;na&nbsp;planszy<br>
+i&nbsp;znak&nbsp;jaki&nbsp;ma&nbsp;zostać&nbsp;na&nbsp;nim&nbsp;postawiony.<br>
+Przed&nbsp;każdym&nbsp;wyborem&nbsp;zostaje&nbsp;wypisany&nbsp;na&nbsp;terminal&nbsp;aktualny&nbsp;stan&nbsp;planszy</tt></dd></dl>
+
+<dl><dt><a name="Game-players_choice"><strong>players_choice</strong></a>(self)</dt><dd><tt>Funkcja&nbsp;tworząca&nbsp;dwóch&nbsp;graczy,&nbsp;jako&nbsp;atrybuty&nbsp;klasy&nbsp;<a href="#Game">Game</a>.<br>
+Parametry&nbsp;tworzenia&nbsp;graczy&nbsp;podawane&nbsp;są&nbsp;przez&nbsp;konsolę.<br>
+Pierwszy&nbsp;gracz&nbsp;domyślnie&nbsp;jest&nbsp;graczem&nbsp;klasy&nbsp;<a href="#Player">Player</a>&nbsp;(człowiek)<br>
+Po&nbsp;podaniu&nbsp;celu&nbsp;gracza&nbsp;pierwszego,&nbsp;cel&nbsp;drugiego&nbsp;gracza&nbsp;<br>
+przypisany&nbsp;jest&nbsp;automatycznie.</tt></dd></dl>
+
+<dl><dt><a name="Game-set_new_game"><strong>set_new_game</strong></a>(self)</dt><dd><tt>Funkcja&nbsp;pozwala&nbsp;graczowi&nbsp;na&nbsp;decyzję&nbsp;poprzez&nbsp;komendę&nbsp;na&nbsp;terminalu,<br>
+na&nbsp;rozegranie&nbsp;gry&nbsp;od&nbsp;nowa&nbsp;lub&nbsp;zakończenie&nbsp;trwającej&nbsp;gry&nbsp;(i&nbsp;programu)</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#9fafca">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="InvalidPlayerData">class <strong>InvalidPlayerData</strong></a>(<a href="builtins.html#Exception">builtins.Exception</a>)</font></td></tr>
+    
+<tr bgcolor="#9fafca"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Common&nbsp;base&nbsp;class&nbsp;for&nbsp;all&nbsp;non-exit&nbsp;exceptions.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="classes.html#InvalidPlayerData">InvalidPlayerData</a></dd>
+<dd><a href="builtins.html#Exception">builtins.Exception</a></dd>
+<dd><a href="builtins.html#BaseException">builtins.BaseException</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="builtins.html#Exception">builtins.Exception</a>:<br>
+<dl><dt><a name="InvalidPlayerData-__init__"><strong>__init__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#Exception">builtins.Exception</a>:<br>
+<dl><dt><a name="InvalidPlayerData-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><a name="InvalidPlayerData-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="InvalidPlayerData-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="InvalidPlayerData-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="InvalidPlayerData-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="InvalidPlayerData-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="InvalidPlayerData-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="InvalidPlayerData-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<dl><dt><a name="InvalidPlayerData-with_traceback"><strong>with_traceback</strong></a>(...)</dt><dd><tt><a href="builtins.html#Exception">Exception</a>.<a href="#InvalidPlayerData-with_traceback">with_traceback</a>(tb)&nbsp;--<br>
+set&nbsp;self.<strong>__traceback__</strong>&nbsp;to&nbsp;tb&nbsp;and&nbsp;return&nbsp;self.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><strong>__cause__</strong></dt>
+<dd><tt>exception&nbsp;cause</tt></dd>
+</dl>
+<dl><dt><strong>__context__</strong></dt>
+<dd><tt>exception&nbsp;context</tt></dd>
+</dl>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__suppress_context__</strong></dt>
+</dl>
+<dl><dt><strong>__traceback__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#9fafca">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="OccupiedFieldEror">class <strong>OccupiedFieldEror</strong></a>(<a href="builtins.html#Exception">builtins.Exception</a>)</font></td></tr>
+    
+<tr bgcolor="#9fafca"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Common&nbsp;base&nbsp;class&nbsp;for&nbsp;all&nbsp;non-exit&nbsp;exceptions.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="classes.html#OccupiedFieldEror">OccupiedFieldEror</a></dd>
+<dd><a href="builtins.html#Exception">builtins.Exception</a></dd>
+<dd><a href="builtins.html#BaseException">builtins.BaseException</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="OccupiedFieldEror-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Static methods inherited from <a href="builtins.html#Exception">builtins.Exception</a>:<br>
+<dl><dt><a name="OccupiedFieldEror-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><a name="OccupiedFieldEror-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="OccupiedFieldEror-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="OccupiedFieldEror-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="OccupiedFieldEror-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="OccupiedFieldEror-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="OccupiedFieldEror-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="OccupiedFieldEror-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<dl><dt><a name="OccupiedFieldEror-with_traceback"><strong>with_traceback</strong></a>(...)</dt><dd><tt><a href="builtins.html#Exception">Exception</a>.<a href="#OccupiedFieldEror-with_traceback">with_traceback</a>(tb)&nbsp;--<br>
+set&nbsp;self.<strong>__traceback__</strong>&nbsp;to&nbsp;tb&nbsp;and&nbsp;return&nbsp;self.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><strong>__cause__</strong></dt>
+<dd><tt>exception&nbsp;cause</tt></dd>
+</dl>
+<dl><dt><strong>__context__</strong></dt>
+<dd><tt>exception&nbsp;context</tt></dd>
+</dl>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__suppress_context__</strong></dt>
+</dl>
+<dl><dt><strong>__traceback__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#9fafca">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="PcPlayer">class <strong>PcPlayer</strong></a>(<a href="classes.html#PcRandomPlayer">PcRandomPlayer</a>)</font></td></tr>
+    
+<tr bgcolor="#9fafca"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#PcPlayer">PcPlayer</a>(name,&nbsp;player_goal)<br>
+&nbsp;<br>
+Klasa&nbsp;<a href="#PcPlayer">PcPlayer</a>&nbsp;dziedziczy&nbsp;po&nbsp;<a href="#PcRandomPlayer">PcRandomPlayer</a>.<br>
+Ruchy&nbsp;gracza&nbsp;sterowane&nbsp;są&nbsp;przez&nbsp;algorytm&nbsp;tak&nbsp;by&nbsp;były&nbsp;możliwe<br>
+najbardziej&nbsp;skuteczne.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="classes.html#PcPlayer">PcPlayer</a></dd>
+<dd><a href="classes.html#PcRandomPlayer">PcRandomPlayer</a></dd>
+<dd><a href="classes.html#Player">Player</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="PcPlayer-choose_move"><strong>choose_move</strong></a>(self, chosen_comb, board_combinations)</dt><dd><tt>Funkcja&nbsp;wybiera&nbsp;ruch&nbsp;(współżędne&nbsp;pola&nbsp;i&nbsp;znak)<br>
+opierający&nbsp;się&nbsp;na&nbsp;dostawieniu&nbsp;znaku&nbsp;przy&nbsp;którymś&nbsp;z&nbsp;dwóch&nbsp;końców<br>
+przekazanej&nbsp;do&nbsp;funkcji&nbsp;kombinacji.<br>
+W&nbsp;celu&nbsp;zmniejszenia&nbsp;przewidywalności&nbsp;wybranego&nbsp;ruchu&nbsp;i&nbsp;<br>
+uniknięcia&nbsp;sytuacji&nbsp;w&nbsp;której&nbsp;do&nbsp;kombinacji&nbsp;która&nbsp;ma&nbsp;wolne&nbsp;pola&nbsp;<br>
+przy&nbsp;obu&nbsp;końcach&nbsp;zawsze&nbsp;dostawiany&nbsp;jest&nbsp;znak&nbsp;z&nbsp;tej&nbsp;samej&nbsp;strony,&nbsp;<br>
+wykorzystany&nbsp;jest&nbsp;czynnik&nbsp;losowej&nbsp;kolejności&nbsp;który&nbsp;orzyjmuje&nbsp;losową<br>
+wartość&nbsp;0&nbsp;lub&nbsp;1&nbsp;i&nbsp;determinuje&nbsp;kolejność&nbsp;sprawdzenia&nbsp;możliwości&nbsp;<br>
+dostawienia&nbsp;(przykładowo&nbsp;gdy&nbsp;do&nbsp;poziomej&nbsp;kombinacji&nbsp;można&nbsp;dołożyć&nbsp;zarówno<br>
+z&nbsp;prawej&nbsp;i&nbsp;z&nbsp;lewej&nbsp;to&nbsp;wybór&nbsp;ten&nbsp;będzie&nbsp;losowy,&nbsp;dzięki&nbsp;temu&nbsp;nie&nbsp;występuje<br>
+sytuacja&nbsp;w&nbsp;której&nbsp;zawsze&nbsp;dostawiony&nbsp;jest&nbsp;znak&nbsp;z&nbsp;lewej&nbsp;lub&nbsp;zawsze&nbsp;z&nbsp;prawej).<br>
+Kombinacja&nbsp;zostaje&nbsp;wjybrana&nbsp;edynie&nbsp;w&nbsp;sytuacji&nbsp;w&nbsp;której&nbsp;któreś&nbsp;z&nbsp;pól&nbsp;(lub&nbsp;oba)<br>
+przy&nbsp;końcach&nbsp;kombinacji&nbsp;jest&nbsp;wolne&nbsp;oraz&nbsp;jeśli&nbsp;w&nbsp;lini&nbsp;kominacji&nbsp;da&nbsp;się&nbsp;utworzyć<br>
+kombinację&nbsp;o&nbsp;długości&nbsp;5&nbsp;ze&nbsp;znaku&nbsp;tej&nbsp;kombinacji.&nbsp;Dzięki&nbsp;temu&nbsp;chaos&nbsp;blokuje&nbsp;jedynie<br>
+te&nbsp;linie&nbsp;w&nbsp;których&nbsp;istnieje&nbsp;zagrożenie&nbsp;stworzenia&nbsp;kombinacji&nbsp;5,&nbsp;a&nbsp;porządek&nbsp;dokłada<br>
+jedynie&nbsp;w&nbsp;tej&nbsp;sytuacji</tt></dd></dl>
+
+<dl><dt><a name="PcPlayer-choose_sign"><strong>choose_sign</strong></a>(self, comb_sign)</dt><dd><tt>Funkcja&nbsp;wybiera&nbsp;znak&nbsp;jaki&nbsp;zostanie&nbsp;postawiony&nbsp;w&nbsp;danym&nbsp;ruchu<br>
+w&nbsp;zależności&nbsp;czy&nbsp;gracz&nbsp;<a href="#PcPlayer">PcPlayer</a>&nbsp;buduje&nbsp;kombinacje&nbsp;(jest&nbsp;porządkiem)<br>
+czy&nbsp;blokuje&nbsp;powstawanie&nbsp;kombuinacji&nbsp;(jest&nbsp;chaosem)</tt></dd></dl>
+
+<dl><dt><a name="PcPlayer-generate_move"><strong>generate_move</strong></a>(self, board_combinations)</dt><dd><tt>Funkcja&nbsp;generuje&nbsp;ruch&nbsp;gracza&nbsp;komputerowego.<br>
+Spośród&nbsp;najdłuższych&nbsp;kombinacji&nbsp;wybierana&nbsp;jest&nbsp;najdłóższa&nbsp;kombinacja<br>
+do&nbsp;której&nbsp;da&nbsp;się&nbsp;dołożyć&nbsp;znak,&nbsp;a&nbsp;w&nbsp;jej&nbsp;lini&nbsp;da&nbsp;się&nbsp;zbudować&nbsp;kombinację<br>
+o&nbsp;długości&nbsp;5&nbsp;ze&nbsp;znaku&nbsp;który&nbsp;ma&nbsp;ta&nbsp;kombinacja.&nbsp;Jeśli&nbsp;kilka&nbsp;kombinacji&nbsp;ma<br>
+taką&nbsp;samą&nbsp;długość&nbsp;to&nbsp;zostaje&nbsp;wybrana&nbsp;losowa.<br>
+Jeśli&nbsp;wedle&nbsp;tego&nbsp;algorytmu&nbsp;nie&nbsp;zostanie&nbsp;wybrana&nbsp;żadna&nbsp;z&nbsp;kombinacji<br>
+zostaje&nbsp;wykonany&nbsp;ruch&nbsp;losowy.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="classes.html#PcRandomPlayer">PcRandomPlayer</a>:<br>
+<dl><dt><a name="PcPlayer-generate_random_move"><strong>generate_random_move</strong></a>(self, board_combinations)</dt><dd><tt>Funkcja&nbsp;zwraca&nbsp;współżędnie&nbsp;losowo&nbsp;wybranego&nbsp;pola<br>
+spośród&nbsp;pustych&nbsp;pól&nbsp;na&nbsp;planszy&nbsp;losowy&nbsp;znak&nbsp;(&nbsp;O&nbsp;lub&nbsp;X)</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="classes.html#Player">Player</a>:<br>
+<dl><dt><a name="PcPlayer-__init__"><strong>__init__</strong></a>(self, name, player_goal)</dt><dd><tt>Tworząc&nbsp;instancję&nbsp;klasy&nbsp;<a href="#Player">Player</a>&nbsp;niezbędne&nbsp;jest&nbsp;podanie<br>
+jego&nbsp;imienia&nbsp;oraz&nbsp;celu&nbsp;gry,<br>
+a&nbsp;cel&nbsp;gry&nbsp;musi&nbsp;być&nbsp;to&nbsp;chaos&nbsp;lub&nbsp;order&nbsp;(chaos&nbsp;lub&nbsp;porządek),<br>
+w&nbsp;przeciwnym&nbsp;wypadku&nbsp;zostaje&nbsp;wzniesiony&nbsp;wyjątek&nbsp;<a href="#InvalidPlayerData">InvalidPlayerData</a>.</tt></dd></dl>
+
+<dl><dt><a name="PcPlayer-goal"><strong>goal</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PcPlayer-name"><strong>name</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="classes.html#Player">Player</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#9fafca">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="PcRandomPlayer">class <strong>PcRandomPlayer</strong></a>(<a href="classes.html#Player">Player</a>)</font></td></tr>
+    
+<tr bgcolor="#9fafca"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#PcRandomPlayer">PcRandomPlayer</a>(name,&nbsp;player_goal)<br>
+&nbsp;<br>
+Klasa&nbsp;<a href="#PcRandomPlayer">PcRandomPlayer</a>&nbsp;dziedziczy&nbsp;po&nbsp;<a href="#Player">Player</a>.<br>
+Jest&nbsp;to&nbsp;gracz&nbsp;którego&nbsp;ruchy&nbsp;generowane&nbsp;są&nbsp;w&nbsp;sposób&nbsp;losowy<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="classes.html#PcRandomPlayer">PcRandomPlayer</a></dd>
+<dd><a href="classes.html#Player">Player</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="PcRandomPlayer-generate_move"><strong>generate_move</strong></a>(self, board_combinations)</dt><dd><tt>Funkcja&nbsp;generuje&nbsp;ruch&nbsp;gracza&nbsp;klasy&nbsp;<a href="#PcRandomPlayer">PcRandomPlayer</a>.<br>
+Jest&nbsp;to&nbsp;losowy&nbsp;ruch.</tt></dd></dl>
+
+<dl><dt><a name="PcRandomPlayer-generate_random_move"><strong>generate_random_move</strong></a>(self, board_combinations)</dt><dd><tt>Funkcja&nbsp;zwraca&nbsp;współżędnie&nbsp;losowo&nbsp;wybranego&nbsp;pola<br>
+spośród&nbsp;pustych&nbsp;pól&nbsp;na&nbsp;planszy&nbsp;losowy&nbsp;znak&nbsp;(&nbsp;O&nbsp;lub&nbsp;X)</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="classes.html#Player">Player</a>:<br>
+<dl><dt><a name="PcRandomPlayer-__init__"><strong>__init__</strong></a>(self, name, player_goal)</dt><dd><tt>Tworząc&nbsp;instancję&nbsp;klasy&nbsp;<a href="#Player">Player</a>&nbsp;niezbędne&nbsp;jest&nbsp;podanie<br>
+jego&nbsp;imienia&nbsp;oraz&nbsp;celu&nbsp;gry,<br>
+a&nbsp;cel&nbsp;gry&nbsp;musi&nbsp;być&nbsp;to&nbsp;chaos&nbsp;lub&nbsp;order&nbsp;(chaos&nbsp;lub&nbsp;porządek),<br>
+w&nbsp;przeciwnym&nbsp;wypadku&nbsp;zostaje&nbsp;wzniesiony&nbsp;wyjątek&nbsp;<a href="#InvalidPlayerData">InvalidPlayerData</a>.</tt></dd></dl>
+
+<dl><dt><a name="PcRandomPlayer-goal"><strong>goal</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PcRandomPlayer-name"><strong>name</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="classes.html#Player">Player</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#9fafca">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Player">class <strong>Player</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#9fafca"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Player">Player</a>(name,&nbsp;player_goal)<br>
+&nbsp;<br>
+Klasa&nbsp;<a href="#Player">Player</a>&nbsp;reprezentuje&nbsp;gracza&nbsp;w&nbsp;grze.<br>
+Ruchy&nbsp;gracza&nbsp;klasy&nbsp;<a href="#Player">Player</a>&nbsp;sterowane&nbsp;są&nbsp;przez&nbsp;urzytkownika.<br>
+Atrybuty:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Nazwa<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Cel:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Określa&nbsp;on&nbsp;czy&nbsp;gracz&nbsp;jest&nbsp;porządkiem&nbsp;czy&nbsp;chaosem,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(czyli&nbsp;czy&nbsp;jego&nbsp;cel&nbsp;to&nbsp;stworzenie&nbsp;kombinacji&nbsp;czy&nbsp;powstrzymanie&nbsp;jej&nbsp;otworzenia)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Player-__init__"><strong>__init__</strong></a>(self, name, player_goal)</dt><dd><tt>Tworząc&nbsp;instancję&nbsp;klasy&nbsp;<a href="#Player">Player</a>&nbsp;niezbędne&nbsp;jest&nbsp;podanie<br>
+jego&nbsp;imienia&nbsp;oraz&nbsp;celu&nbsp;gry,<br>
+a&nbsp;cel&nbsp;gry&nbsp;musi&nbsp;być&nbsp;to&nbsp;chaos&nbsp;lub&nbsp;order&nbsp;(chaos&nbsp;lub&nbsp;porządek),<br>
+w&nbsp;przeciwnym&nbsp;wypadku&nbsp;zostaje&nbsp;wzniesiony&nbsp;wyjątek&nbsp;<a href="#InvalidPlayerData">InvalidPlayerData</a>.</tt></dd></dl>
+
+<dl><dt><a name="Player-generate_move"><strong>generate_move</strong></a>(self, board_combinations=None)</dt><dd><tt>Funkcja&nbsp;zwraca&nbsp;dane&nbsp;niezbędne&nbsp;do&nbsp;wykonania&nbsp;ruchu<br>
+(współżędne&nbsp;pola&nbsp;i&nbsp;jego&nbsp;znak)&nbsp;na&nbsp;podstawie&nbsp;danych<br>
+wpisanych&nbsp;przez&nbsp;użytkownika&nbsp;w&nbsp;terminalu.</tt></dd></dl>
+
+<dl><dt><a name="Player-goal"><strong>goal</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Player-name"><strong>name</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#9fafca">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="WrongFieldDataError">class <strong>WrongFieldDataError</strong></a>(<a href="builtins.html#Exception">builtins.Exception</a>)</font></td></tr>
+    
+<tr bgcolor="#9fafca"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Common&nbsp;base&nbsp;class&nbsp;for&nbsp;all&nbsp;non-exit&nbsp;exceptions.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="classes.html#WrongFieldDataError">WrongFieldDataError</a></dd>
+<dd><a href="builtins.html#Exception">builtins.Exception</a></dd>
+<dd><a href="builtins.html#BaseException">builtins.BaseException</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="WrongFieldDataError-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Static methods inherited from <a href="builtins.html#Exception">builtins.Exception</a>:<br>
+<dl><dt><a name="WrongFieldDataError-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><a name="WrongFieldDataError-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="WrongFieldDataError-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="WrongFieldDataError-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="WrongFieldDataError-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="WrongFieldDataError-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="WrongFieldDataError-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="WrongFieldDataError-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<dl><dt><a name="WrongFieldDataError-with_traceback"><strong>with_traceback</strong></a>(...)</dt><dd><tt><a href="builtins.html#Exception">Exception</a>.<a href="#WrongFieldDataError-with_traceback">with_traceback</a>(tb)&nbsp;--<br>
+set&nbsp;self.<strong>__traceback__</strong>&nbsp;to&nbsp;tb&nbsp;and&nbsp;return&nbsp;self.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><strong>__cause__</strong></dt>
+<dd><tt>exception&nbsp;cause</tt></dd>
+</dl>
+<dl><dt><strong>__context__</strong></dt>
+<dd><tt>exception&nbsp;context</tt></dd>
+</dl>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__suppress_context__</strong></dt>
+</dl>
+<dl><dt><strong>__traceback__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#9fafca">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="WrongFieldError">class <strong>WrongFieldError</strong></a>(<a href="builtins.html#Exception">builtins.Exception</a>)</font></td></tr>
+    
+<tr bgcolor="#9fafca"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Common&nbsp;base&nbsp;class&nbsp;for&nbsp;all&nbsp;non-exit&nbsp;exceptions.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="classes.html#WrongFieldError">WrongFieldError</a></dd>
+<dd><a href="builtins.html#Exception">builtins.Exception</a></dd>
+<dd><a href="builtins.html#BaseException">builtins.BaseException</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="builtins.html#Exception">builtins.Exception</a>:<br>
+<dl><dt><a name="WrongFieldError-__init__"><strong>__init__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#Exception">builtins.Exception</a>:<br>
+<dl><dt><a name="WrongFieldError-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><a name="WrongFieldError-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="WrongFieldError-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="WrongFieldError-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="WrongFieldError-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="WrongFieldError-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="WrongFieldError-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="WrongFieldError-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<dl><dt><a name="WrongFieldError-with_traceback"><strong>with_traceback</strong></a>(...)</dt><dd><tt><a href="builtins.html#Exception">Exception</a>.<a href="#WrongFieldError-with_traceback">with_traceback</a>(tb)&nbsp;--<br>
+set&nbsp;self.<strong>__traceback__</strong>&nbsp;to&nbsp;tb&nbsp;and&nbsp;return&nbsp;self.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><strong>__cause__</strong></dt>
+<dd><tt>exception&nbsp;cause</tt></dd>
+</dl>
+<dl><dt><strong>__context__</strong></dt>
+<dd><tt>exception&nbsp;context</tt></dd>
+</dl>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__suppress_context__</strong></dt>
+</dl>
+<dl><dt><strong>__traceback__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#9fafca">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="WrongSignError">class <strong>WrongSignError</strong></a>(<a href="builtins.html#Exception">builtins.Exception</a>)</font></td></tr>
+    
+<tr bgcolor="#9fafca"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Common&nbsp;base&nbsp;class&nbsp;for&nbsp;all&nbsp;non-exit&nbsp;exceptions.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="classes.html#WrongSignError">WrongSignError</a></dd>
+<dd><a href="builtins.html#Exception">builtins.Exception</a></dd>
+<dd><a href="builtins.html#BaseException">builtins.BaseException</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="WrongSignError-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Static methods inherited from <a href="builtins.html#Exception">builtins.Exception</a>:<br>
+<dl><dt><a name="WrongSignError-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><a name="WrongSignError-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="WrongSignError-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="WrongSignError-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="WrongSignError-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="WrongSignError-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="WrongSignError-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="WrongSignError-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<dl><dt><a name="WrongSignError-with_traceback"><strong>with_traceback</strong></a>(...)</dt><dd><tt><a href="builtins.html#Exception">Exception</a>.<a href="#WrongSignError-with_traceback">with_traceback</a>(tb)&nbsp;--<br>
+set&nbsp;self.<strong>__traceback__</strong>&nbsp;to&nbsp;tb&nbsp;and&nbsp;return&nbsp;self.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><strong>__cause__</strong></dt>
+<dd><tt>exception&nbsp;cause</tt></dd>
+</dl>
+<dl><dt><strong>__context__</strong></dt>
+<dd><tt>exception&nbsp;context</tt></dd>
+</dl>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__suppress_context__</strong></dt>
+</dl>
+<dl><dt><strong>__traceback__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>trophy</strong> = '<font color="#c040c0">\n</font>    ________¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶<font color="#c040c0">\n</font>    ____...¶¶¶¶¶¶¶¶¶¶¶<font color="#c040c0">\n</font>    _________¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶'</td></tr></table>
+</body></html>
