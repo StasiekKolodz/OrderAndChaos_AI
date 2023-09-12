@@ -4,7 +4,8 @@ from tabulate import tabulate
 from enum import Enum
 import os
 from text_pictures import trophy
-
+from AiPlayer import OrderTrainer, ChaosTrainer
+import numpy as np
 
 class InvalidPlayerData(Exception):
     pass
@@ -1137,3 +1138,15 @@ class Game:
             print(f'{self.chaos_player.name().upper()} WON !!!')
         if self.is_new_game_set is True:
             self.play_new_game()
+
+class TrainingGame():
+    def __init__(self, validation_mode=False):
+        self.validation_mode = validation_mode
+        self.is_game_running = False
+        self.is_training_running = False
+        self.order_player = OrderTrainer
+        self.chaos_player = ChaosTrainer
+    
+        self.states = []
+        self.
+    def 
