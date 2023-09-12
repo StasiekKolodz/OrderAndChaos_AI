@@ -1,4 +1,4 @@
-# import torch
+import torch
 from torch import nn
 
 
@@ -18,6 +18,14 @@ class Network(nn.Module):
         x = self.lin2(x)
         return x
 
+    def save(self, file_name='model.pth'):
+        model_folder_path = './model'
+        if not os.path.exists(model_folder_path):
+            os.makedirs(model_folder_path)
+
+        file_name = os.path.join(model_folder_path, file_name)
+        torch.save(self.state_dict(), file_name)
+
 class Trainer:
     def __init__(self, model, lr=0.01):
         self.lr = lr
@@ -28,7 +36,7 @@ class Trainer:
 
     def set_lr(self, lr):
         self.lr = lr
-        
+
     def train_step(self, states, actions, reward):
 
         self.optimizer.zero_grad()
