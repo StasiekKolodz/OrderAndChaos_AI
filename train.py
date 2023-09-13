@@ -2,7 +2,7 @@ from games import Game, TrainingGame
 
 
 def main():
-    training_game = TrainingGameGame()
+    training_game = TrainingGame()
     training_game.training_session(20)
 
 

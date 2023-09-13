@@ -1,5 +1,5 @@
 import torch
-from torch import nn
+from torch import nn, optim
 from torch.utils.data import TensorDataset
 from torch.utils.data import DataLoader
 
@@ -30,7 +30,6 @@ class Network(nn.Module):
 class Trainer:
     def __init__(self, model, lr=0.01):
         self.lr = lr
-        self.gamma = gamma
         self.model = model
         self.optimizer = optim.Adam(model.parameters(), lr=self.lr)
         self.criterion = nn.CrossEntropyLoss()

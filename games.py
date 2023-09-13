@@ -202,7 +202,9 @@ class TrainingGame():
 
 
     def training_session(self, games_num):
+        print("Training session started...")
         for i in range(games_num):
+            print(f"Game number {games_num} running...")
             winner, round_number = self.play_game()
             self.order_player.train(winner, round_number)
             self.chaos_player.train(winner, round_number)
@@ -239,6 +241,7 @@ class TrainingGame():
         try:
             row, column, sign = self.order_player.generate_move(
                 self.board_combinations)
+            print(f"move: {row}, {column}, {sign}")
             self.board.put(sign, row, column)
             self.board_combinations.set_board_state(self.board.state())
 
