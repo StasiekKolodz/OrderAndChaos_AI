@@ -200,10 +200,25 @@ class TrainingGame():
     
         self.states = []
 
+
+    def training_session(self, games_num):
+        for i in range(games_num):
+            winner, round_number = self.play_game()
+            self.order_player.train(winner, round_number)
+            self.chaos_player.train(winner, round_number)
+
     def play_game(self):
+        self.board = Board()
+        self.board_combinations = BoardCombinations()
+
+        round_number = 0
         while self.should_game_run():
+            round_number += 1
             self.play_round()
-        
+        self.board.board_print()
+        winner = self.check_winner()
+        return winner, round_number
+
 
     def check_winner(self):
         if self.board_combinations.is_win_order() or self.chaos_illegal_move:
