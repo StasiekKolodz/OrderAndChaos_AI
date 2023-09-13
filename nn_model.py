@@ -1,6 +1,7 @@
 import torch
 from torch import nn
-
+from torch.utils.data import TensorDataset
+from torch.utils.data import DataLoader
 
 class Network(nn.Module):
     def __init__(self):
@@ -38,7 +39,7 @@ class Trainer:
         self.lr = lr
 
     def train_step(self, states, actions, reward):
-
+        torch.tensor
         self.optimizer.zero_grad()
         pred = self.model(states)
         loss = self.criterion(pred, actions) * reward
