@@ -12,6 +12,7 @@ class AiPlayer(PcRandomPlayer):
         super().__init__(name, player_goal)
         self.model = Network()
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.random_games_num = 50000
         # self.device = torch.device("cpu")
 
         print(f"Device: {self.device}")
@@ -52,7 +53,8 @@ class AiPlayer(PcRandomPlayer):
 
 
     def generate_move(self, board_combinations):
-        if self.moves_counter >=30000:
+
+        if self.moves_counter >=self.random_games_num:
             """Generate next move on board based on network prediction"""
             board_state = list(map(self.decode_sign_board, copy.deepcopy(board_combinations.state())))
             board_state = torch.tensor(board_state, dtype=torch.float).flatten()
@@ -64,7 +66,7 @@ class AiPlayer(PcRandomPlayer):
             return row, column, sign
         else:
             self.moves_counter += 1
-            if self.moves_counter == 30000 -2:
+            if self.moves_counter == self.random_games_num -2:
                 print("Last random move")
             return self.generate_random_move(board_combinations)
         
@@ -150,25 +152,28 @@ class ChaosTrainer(PlayerTrainer):
         elif game_winner == 'chaos':
             rewards[:] = 10
 
+        tensor_boards = torch.empty((len(self.board_states),6*6), dtype=torch.float)
+        tensor_next_boards = torch.empty((len(self.board_states),6*6), dtype=torch.float)
+        tensor_moves = torch.empty((len(self.board_states),6*6*2), dtype=torch.float)
+
         for i, board in enumerate(self.board_states):
-            move = self.moves[i]
+            tensor_move = self.moves_to_tensor(self.moves[i])
+            tensor_moves[i][:] = tensor_move
             decoded_board = list(map(self.decode_sign_board, copy.deepcopy(board)))
             decoded_tensor = torch.tensor(decoded_board, dtype=torch.float).flatten()
-
+            tensor_boards[i] = decoded_tensor
             if i < len(self.board_states)-1:
                 next_board = self.board_states[i+1]
-            else:
-                next_board = None
-            decoded_next_board = list(map(self.decode_sign_board, copy.deepcopy(board)))
-            decoded_next_tensor = torch.tensor(decoded_board, dtype=torch.float).flatten()
+                decoded_next_board = list(map(self.decode_sign_board, copy.deepcopy(next_board)))
+                decoded_next_tensor = torch.tensor(decoded_next_board, dtype=torch.float).flatten()
+                tensor_next_boards[i] = decoded_next_tensor
             # torch.cat((x_tensor, decoded_tensor), dim=0)
             # print(f"board: {decoded_tensor.shape}")
             # print(f"move: {move}")
             # print(f"x_tensor: {x_tensor.shape}")
-            self.trainer.train_step(decoded_tensor.to(self.device), 
-                decoded_next_tensor.to(self.device), 
-                self.moves_to_tensor(move).to(self.device), rewards[i])
-
+        self.trainer.train_step(tensor_boards.to(self.device), 
+            tensor_next_boards.to(self.device), 
+            tensor_moves.to(self.device), rewards)
 class RandomTrainer(PlayerTrainer):
     def train(self, game_winner, moves_number, illegal_move):
         pass

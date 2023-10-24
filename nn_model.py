@@ -32,7 +32,7 @@ class Network(nn.Module):
 
 
 class Trainer:
-    def __init__(self, model, lr=0.01, gamma=0.9):
+    def __init__(self, model, lr=0.001, gamma=0.9):
         self.lr = lr
         self.gamma = gamma
         self.model = model
@@ -42,27 +42,34 @@ class Trainer:
     def set_lr(self, lr):
         self.lr = lr
 
-    def train_step(self, board, next_board, actions, reward):
-        pred = self.model(board)
+    def train_step(self, boards, next_boards, actions, rewards):
+        # print(f" shape: {boards.shape}")
+        pred = self.model(boards)
+        next_pred = self.model(next_boards)
         target = pred.clone()
-        Q_new = reward
-        if next_board is not None:
-            Q_new = reward + self.gamma * torch.max(self.model(next_board)).item()
+        num_samples = len(boards)
+        for idx in range(num_samples):
 
-        
-        # print(f"Action (NN): {actions}")
-        target[torch.argmax(actions).item()] = Q_new      
-        # print(f"WTF: {torch.argmax(actions).item()}")  
-        
-        # print(f"pred: {pred}")
-        # print(f"target: {target}")
-        # print(f"actions: {actions}")
-        # print(f"actions_q: {torch.argmax(pred).item()}")
-        # print(f"Q_new: {Q_new}")
-        # print(f"reward: {reward}")
+            if idx != num_samples-1:
+                Q_new = rewards[idx] + self.gamma * torch.max(next_pred[idx]).item()
+            else:
+                Q_new = rewards[idx]
+
+    
+            target[idx][torch.argmax(actions[idx]).item()] = Q_new      
+            # print(f"IDX: {idx}")
+            # print(f"pred: {pred[idx]}")
+            # print(f"next_pred: {next_pred[idx]}")
+            # print(f"board: {boards[idx]}")
+            # print(f"target: {target[idx]}")
+            # print(f"actions: {actions[idx].argmax()}")
+            # print(f"actions_q: {torch.argmax(pred[idx]).item()}")
+            # print(f"Q_new: {Q_new}")
+            # print(f"Q: {torch.max(pred[idx]).item()}")
+            # print(f"reward: {rewards[idx]}")
         loss = self.criterion(target, pred)
         # print(f"loss: {loss.item()}")
-        # print(f"Q: {torch.max(pred).item()}")
+     
         loss.backward()
         self.optimizer.step()
         self.optimizer.zero_grad()
