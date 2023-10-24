@@ -52,7 +52,7 @@ class AiPlayer(PcRandomPlayer):
 
 
     def generate_move(self, board_combinations):
-        if self.moves_counter >=30000:
+        if self.moves_counter >=300000:
             """Generate next move on board based on network prediction"""
             board_state = list(map(self.decode_sign_board, copy.deepcopy(board_combinations.state())))
             board_state = torch.tensor(board_state, dtype=torch.float).flatten()
@@ -64,7 +64,7 @@ class AiPlayer(PcRandomPlayer):
             return row, column, sign
         else:
             self.moves_counter += 1
-            if self.moves_counter == 30000 -2:
+            if self.moves_counter == 300000 -2:
                 print("Last random move")
             return self.generate_random_move(board_combinations)
         
