@@ -18,7 +18,7 @@ class AiPlayer(PcRandomPlayer):
             self.model.load_state_dict(torch.load(path))
 
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        self.random_games_num = 10000
+        self.random_games_num = 1000
         # self.device = torch.device("cpu")
 
         print(f"Device: {self.device}")
@@ -66,14 +66,26 @@ class AiPlayer(PcRandomPlayer):
             """Generate next move on board based on network prediction"""
             board_state = list(map(self.decode_sign_board, copy.deepcopy(board_combinations.state())))
             board_state = torch.tensor(board_state, dtype=torch.float).flatten()
+            self.model.eval()
             with torch.no_grad():
-                self.model.eval()
+                
                 prediction = self.model(board_state.to(self.device))
-                max_pred = prediction.argmax().item()
-                self.model.train()
+                # Look for the best move but possible on board
+                top_k = torch.topk(prediction, 6*6*2)
+                idx = 0
+                max_pred = top_k.indices[idx]
+                row = (max_pred%36)//6
+                column = (max_pred%36)%6
+                while board_combinations.state()[row][column] != '-':
+                    idx += 1
+                    max_pred = top_k.indices[idx]
+                    row = (max_pred%36)//6
+                    column = (max_pred%36)%6
+        
+                # max_pred = prediction.argmax().item()
+            self.model.train()
             sign = self.encode_sign(max_pred//36 + 1)
-            row = (max_pred%36)//6
-            column = (max_pred%36)%6
+
             self.moves_counter += 1
             # if self.moves_counter == self.random_games_num * 2:
             #     self.moves_counter = 0
@@ -132,27 +144,44 @@ class OrderTrainer(PlayerTrainer):
        super().__init__('Order Trainer', 'order')
 
     def train(self, game_winner, moves_number, illegal_move):
-        
-        rewards = torch.zeros(moves_number)
-        if illegal_move:
-            rewards[-1] = -1000
-        elif game_winner == 'chaos':
-            rewards[-1] =  -10
-        elif game_winner == 'order':
-            # TODO: Implement moves_number sensitivity to win faster
-            rewards[-1] = 10
+        # print(f"ww: {game_winner}")
 
-            # reward = 8 - moves_number*0.1
-        
+        rewards = torch.zeros(moves_number)
+
+        if illegal_move:
+            rewards[:] = 1
+            rewards[-1] = -1000
+        elif game_winner == 'order':
+            rewards[:] = -10
+        elif game_winner == 'chaos':
+            rewards[:] = 10
+            rewards[-1] = 100
+        else:
+            raise ValueError
+
+        batch_size = len(self.board_states)
+        tensor_boards = torch.empty((batch_size,6*6), dtype=torch.float)
+        tensor_next_boards = torch.empty((batch_size,6*6), dtype=torch.float)
+        tensor_moves = torch.empty((batch_size,6*6*2), dtype=torch.float)
+
         for i, board in enumerate(self.board_states):
-            move = self.moves[i]
+            tensor_move = self.moves_to_tensor(self.moves[i])
+            tensor_moves[i][:] = tensor_move
             decoded_board = list(map(self.decode_sign_board, copy.deepcopy(board)))
             decoded_tensor = torch.tensor(decoded_board, dtype=torch.float).flatten()
+            tensor_boards[i] = decoded_tensor
+            if i < batch_size-1:
+                next_board = self.board_states[i+1]
+                decoded_next_board = list(map(self.decode_sign_board, copy.deepcopy(next_board)))
+                decoded_next_tensor = torch.tensor(decoded_next_board, dtype=torch.float).flatten()
+                tensor_next_boards[i] = decoded_next_tensor
             # torch.cat((x_tensor, decoded_tensor), dim=0)
             # print(f"board: {decoded_tensor.shape}")
             # print(f"move: {move}")
             # print(f"x_tensor: {x_tensor.shape}")
-            self.trainer.train_step(decoded_tensor.to(self.device), self.moves_to_tensor(move), reward)
+        self.trainer.train_step(tensor_boards.to(self.device), 
+            tensor_next_boards.to(self.device), 
+            tensor_moves.to(self.device), rewards)
         
 
 
