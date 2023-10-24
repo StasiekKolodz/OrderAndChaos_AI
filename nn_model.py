@@ -49,14 +49,20 @@ class Trainer:
         if next_board is not None:
             Q_new = reward + self.gamma * torch.max(self.model(next_board)).item()
 
-        actions = actions.argmax()
+        
         # print(f"Action (NN): {actions}")
-        target[actions.argmax().item()] = Q_new
-        targey = target
+        target[torch.argmax(actions).item()] = Q_new      
+        # print(f"WTF: {torch.argmax(actions).item()}")  
         
-        
-     
+        # print(f"pred: {pred}")
+        # print(f"target: {target}")
+        # print(f"actions: {actions}")
+        # print(f"actions_q: {torch.argmax(pred).item()}")
+        # print(f"Q_new: {Q_new}")
+        # print(f"reward: {reward}")
         loss = self.criterion(target, pred)
+        # print(f"loss: {loss.item()}")
+        # print(f"Q: {torch.max(pred).item()}")
         loss.backward()
         self.optimizer.step()
         self.optimizer.zero_grad()
