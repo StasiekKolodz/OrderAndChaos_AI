@@ -3,16 +3,22 @@ from nn_model import Network, Trainer
 import numpy as np
 import torch
 import copy
+from numpy import random
+
 
 
 class AiPlayer(PcRandomPlayer):
     """ Pc Player driven by neural network """
 
-    def __init__(self, name, player_goal):
+    def __init__(self, name, player_goal, path=None):
         super().__init__(name, player_goal)
         self.model = Network()
+
+        if path:
+            self.model.load_state_dict(torch.load(path))
+
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        self.random_games_num = 50000
+        self.random_games_num = 10000
         # self.device = torch.device("cpu")
 
         print(f"Device: {self.device}")
@@ -51,18 +57,27 @@ class AiPlayer(PcRandomPlayer):
         if sign_num == 2:
             return 'O'
 
+    def load_model(self, path):
+        self.model.load_state_dict(torch.load(path))
 
     def generate_move(self, board_combinations):
-
-        if self.moves_counter >=self.random_games_num:
+        rand_val = random.rand()
+        if self.moves_counter >= self.random_games_num and rand_val>0.6:
             """Generate next move on board based on network prediction"""
             board_state = list(map(self.decode_sign_board, copy.deepcopy(board_combinations.state())))
             board_state = torch.tensor(board_state, dtype=torch.float).flatten()
-            prediction = self.model(board_state.to(self.device))
-            max_pred = prediction.argmax().item()
+            with torch.no_grad():
+                self.model.eval()
+                prediction = self.model(board_state.to(self.device))
+                max_pred = prediction.argmax().item()
+                self.model.train()
             sign = self.encode_sign(max_pred//36 + 1)
             row = (max_pred%36)//6
             column = (max_pred%36)%6
+            self.moves_counter += 1
+            # if self.moves_counter == self.random_games_num * 2:
+            #     self.moves_counter = 0
+            #     print("Counter reset")
             return row, column, sign
         else:
             self.moves_counter += 1
@@ -106,7 +121,12 @@ class PlayerTrainer(AiPlayer):
         tensor = torch.zeros(72)
         tensor[idx] = 1
         return tensor
-        
+    
+    def save_model(self, model_name="model"):
+        print(f"Saving model {model_name}...")
+        self.model.save(file_name=model_name+".pth")
+        print("Model saved...")
+
 class OrderTrainer(PlayerTrainer):
     def __init__(self):
        super().__init__('Order Trainer', 'order')
@@ -139,6 +159,9 @@ class OrderTrainer(PlayerTrainer):
 class ChaosTrainer(PlayerTrainer):
     def __init__(self):
         super().__init__('Chaos Trainer', 'chaos')
+        # path = "./model/chaos_model.pth"
+        # self.load_model(path)
+        # print(f"Chaos model loaded form {path}")
 
     def train(self, game_winner, moves_number, illegal_move):
         # print(f"ww: {game_winner}")
@@ -146,15 +169,20 @@ class ChaosTrainer(PlayerTrainer):
         rewards = torch.zeros(moves_number)
 
         if illegal_move:
+            rewards[:] = 1
             rewards[-1] = -1000
         elif game_winner == 'order':
             rewards[:] = -10
         elif game_winner == 'chaos':
             rewards[:] = 10
+            rewards[-1] = 100
+        else:
+            raise ValueError
 
-        tensor_boards = torch.empty((len(self.board_states),6*6), dtype=torch.float)
-        tensor_next_boards = torch.empty((len(self.board_states),6*6), dtype=torch.float)
-        tensor_moves = torch.empty((len(self.board_states),6*6*2), dtype=torch.float)
+        batch_size = len(self.board_states)
+        tensor_boards = torch.empty((batch_size,6*6), dtype=torch.float)
+        tensor_next_boards = torch.empty((batch_size,6*6), dtype=torch.float)
+        tensor_moves = torch.empty((batch_size,6*6*2), dtype=torch.float)
 
         for i, board in enumerate(self.board_states):
             tensor_move = self.moves_to_tensor(self.moves[i])
@@ -162,7 +190,7 @@ class ChaosTrainer(PlayerTrainer):
             decoded_board = list(map(self.decode_sign_board, copy.deepcopy(board)))
             decoded_tensor = torch.tensor(decoded_board, dtype=torch.float).flatten()
             tensor_boards[i] = decoded_tensor
-            if i < len(self.board_states)-1:
+            if i < batch_size-1:
                 next_board = self.board_states[i+1]
                 decoded_next_board = list(map(self.decode_sign_board, copy.deepcopy(next_board)))
                 decoded_next_tensor = torch.tensor(decoded_next_board, dtype=torch.float).flatten()

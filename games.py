@@ -211,6 +211,8 @@ class TrainingGame():
             winner, round_number = self.play_game()
             self.order_player.train(winner, round_number, self.order_illegal_move)
             self.chaos_player.train(winner, round_number, self.chaos_illegal_move)
+        self.chaos_player.save_model("chaos_model")
+        print("Training session finished")
 
     def play_game(self):
         self.board = Board()

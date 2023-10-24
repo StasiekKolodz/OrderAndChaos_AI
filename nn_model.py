@@ -2,6 +2,7 @@ import torch
 from torch import nn, optim
 from torch.utils.data import TensorDataset
 from torch.utils.data import DataLoader
+import os
 
 class Network(nn.Module):
     def __init__(self):
@@ -12,13 +13,16 @@ class Network(nn.Module):
         Firstly all fields and x sign next all fields and o sign"""
         self.lin1 = nn.Linear(36, 50)
         self.relu = nn.ReLU()
+        # self.b_norm = nn.BatchNorm1d(50)
         self.lin2 = nn.Linear(50, 72)
 
         
 
     def forward(self, x):
         x = self.lin1(x)
+        # x = self.b_norm(x)
         x = self.relu(x)
+        
         x = self.lin2(x)
         return x
 
@@ -32,7 +36,7 @@ class Network(nn.Module):
 
 
 class Trainer:
-    def __init__(self, model, lr=0.001, gamma=0.9):
+    def __init__(self, model, lr=0.01, gamma=0.9):
         self.lr = lr
         self.gamma = gamma
         self.model = model
