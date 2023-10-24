@@ -1,5 +1,5 @@
 from classes import *
-from AiPlayer import OrderTrainer, ChaosTrainer
+from AiPlayer import OrderTrainer, ChaosTrainer, RandomTrainer
 
 class Game:
     """
@@ -189,11 +189,13 @@ class TrainingGame():
         self.validation_mode = validation_mode
         self.is_game_running = False
         self.is_training_running = False
-        self.order_llegal_move = False
+        self.order_illegal_move = False
         self.chaos_illegal_move = False
 
-        self.order_player = OrderTrainer()
+        # self.order_player = OrderTrainer()
+        self.order_player = RandomTrainer("random", "order")
         self.chaos_player = ChaosTrainer()
+        # self.chaos_player = RandomTrainer("random", "chaos")
 
         self.board = Board()
         self.board_combinations = BoardCombinations()
@@ -204,35 +206,44 @@ class TrainingGame():
     def training_session(self, games_num):
         print("Training session started...")
         for i in range(games_num):
-            print(f"Game number {games_num} running...")
+            # print(f"Game {i+1}/{games_num} running...")
+            self.game_number = i
             winner, round_number = self.play_game()
-            self.order_player.train(winner, round_number)
-            self.chaos_player.train(winner, round_number)
+            self.order_player.train(winner, round_number, self.order_illegal_move)
+            self.chaos_player.train(winner, round_number, self.chaos_illegal_move)
 
     def play_game(self):
         self.board = Board()
         self.board_combinations = BoardCombinations()
+        self.chaos_illegal_move = False
+        self.order_illegal_move = False
+
+        self.order_player.reset_moves_data()
+        self.chaos_player.reset_moves_data()
 
         round_number = 0
         while self.should_game_run():
             round_number += 1
             self.play_round()
-        self.board.board_print()
+        if self.game_number%1000 == 0:
+            self.board.board_print()
         winner = self.check_winner()
         return winner, round_number
 
 
     def check_winner(self):
         if self.board_combinations.is_win_order() or self.chaos_illegal_move:
+            # print(f"WINNER: order. IS_WIN_ORDER={self.board_combinations.is_win_order()}. ")
             return 'order'
-        if self.board_combinations.is_full() or self.order_llegal_move:
+        if self.board_combinations.is_full() or self.order_illegal_move:
+            # print(f"WINNER: chaos. IS_BOARD_FULL={self.board_combinations.is_win_order()}. ")
             return 'chaos'
         else:
             raise ValueError
 
     def should_game_run(self):
         if (self.board_combinations.is_win_order() or self.board_combinations.is_full() 
-            or self.order_llegal_move or self.chaos_illegal_move):
+            or self.order_illegal_move or self.chaos_illegal_move):
                 return False
         else:
             return True
@@ -241,27 +252,32 @@ class TrainingGame():
         try:
             row, column, sign = self.order_player.generate_move(
                 self.board_combinations)
-            print(f"move: {row}, {column}, {sign}")
+            self.order_player.add_move_data(self.board.state(), (row, column, sign))    
+            # print(f"order move: {row}, {column}, {sign}")
             self.board.put(sign, row, column)
             self.board_combinations.set_board_state(self.board.state())
 
-            self.order_player.add_move_data(self.board.state(), (row, column, sign))
+            
         except WrongFieldDataError:
             pass
         except OccupiedFieldEror:
-            self.order_llegal_move = True
+            print(f"Order illegal: {row}, {column}, {sign}")
+            self.order_illegal_move = True
         if (
             not self.board.is_win_order()
             and not self.board.is_full()
-            and not self.order_llegal_move
+            and not self.order_illegal_move
         ):
             try:
                 row_2, column_2, sign_2 = self.chaos_player.generate_move(
                     self.board_combinations)
+                self.chaos_player.add_move_data(self.board.state(), (row_2, column_2, sign_2))    
+                # print(f"chaos move: {row_2}, {column_2}, {sign_2}")
                 self.board.put(sign_2, row_2, column_2)
                 self.board_combinations.set_board_state(self.board.state())
-                self.chaos_player.add_move_data(self.board.state(), (row, column, sign))
+                
             except WrongFieldDataError:
                 pass
             except OccupiedFieldEror:
-                self.chaos_llegal_move = True
+                # print(f"Chaos illegal: {row}, {column}, {sign}")
+                self.chaos_illegal_move = True

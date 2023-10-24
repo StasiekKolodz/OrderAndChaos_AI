@@ -10,9 +10,12 @@ class Network(nn.Module):
         every field (36) and every sign on that field(36*2=72)
 
         Firstly all fields and x sign next all fields and o sign"""
-        self.lin1 = nn.Linear(36, 100)
+        self.lin1 = nn.Linear(36, 50)
         self.relu = nn.ReLU()
-        self.lin2 = nn.Linear(100, 72)
+        self.lin2 = nn.Linear(50, 72)
+
+        
+
     def forward(self, x):
         x = self.lin1(x)
         x = self.relu(x)
@@ -27,20 +30,33 @@ class Network(nn.Module):
         file_name = os.path.join(model_folder_path, file_name)
         torch.save(self.state_dict(), file_name)
 
+
 class Trainer:
-    def __init__(self, model, lr=0.01):
+    def __init__(self, model, lr=0.01, gamma=0.9):
         self.lr = lr
+        self.gamma = gamma
         self.model = model
         self.optimizer = optim.Adam(model.parameters(), lr=self.lr)
-        self.criterion = nn.CrossEntropyLoss()
+        self.criterion = nn.MSELoss()
 
     def set_lr(self, lr):
         self.lr = lr
 
-    def train_step(self, states, actions, reward):
-        torch.tensor
-        self.optimizer.zero_grad()
-        pred = self.model(states)
-        loss = self.criterion(pred, actions) * reward
+    def train_step(self, board, next_board, actions, reward):
+        pred = self.model(board)
+        target = pred.clone()
+        Q_new = reward
+        if next_board is not None:
+            Q_new = reward + self.gamma * torch.max(self.model(next_board)).item()
+
+        actions = actions.argmax()
+        # print(f"Action (NN): {actions}")
+        target[actions.argmax().item()] = Q_new
+        targey = target
+        
+        
+     
+        loss = self.criterion(target, pred)
         loss.backward()
         self.optimizer.step()
+        self.optimizer.zero_grad()
