@@ -1,6 +1,6 @@
 from classes import *
 from AiPlayer import OrderTrainer, ChaosTrainer, RandomTrainer
-
+from meter import WinMeter
 class Game:
     """
     Klasa reprezentująca grę
@@ -202,6 +202,8 @@ class TrainingGame():
     
         self.states = []
 
+        self.win_meter = WinMeter()
+
 
     def training_session(self, games_num):
         print("Training session started...")
@@ -209,6 +211,8 @@ class TrainingGame():
             # print(f"Game {i+1}/{games_num} running...")
             self.game_number = i
             winner, round_number = self.play_game()
+            self.win_meter.add_win(winner)
+
             self.order_player.train(winner, round_number, self.order_illegal_move)
             self.chaos_player.train(winner, round_number, self.chaos_illegal_move)
         self.chaos_player.save_model("chaos_model")
@@ -229,6 +233,8 @@ class TrainingGame():
             self.play_round()
         if self.game_number%500 == 0:
             self.board.board_print()
+            self.win_meter.print_stats()
+            
         winner = self.check_winner()
         return winner, round_number
 

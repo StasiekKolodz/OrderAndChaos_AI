@@ -18,7 +18,7 @@ class AiPlayer(PcRandomPlayer):
             self.model.load_state_dict(torch.load(path))
 
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        self.random_games_num = 1000
+        self.random_games_num = 100000
         # self.device = torch.device("cpu")
 
         print(f"Device: {self.device}")
@@ -62,7 +62,7 @@ class AiPlayer(PcRandomPlayer):
 
     def generate_move(self, board_combinations):
         rand_val = random.rand()
-        if self.moves_counter >= self.random_games_num and rand_val>0.6:
+        if self.moves_counter >= self.random_games_num and rand_val>0.2:
             """Generate next move on board based on network prediction"""
             board_state = list(map(self.decode_sign_board, copy.deepcopy(board_combinations.state())))
             board_state = torch.tensor(board_state, dtype=torch.float).flatten()
@@ -152,10 +152,10 @@ class OrderTrainer(PlayerTrainer):
             rewards[:] = 1
             rewards[-1] = -1000
         elif game_winner == 'order':
-            rewards[:] = -10
-        elif game_winner == 'chaos':
             rewards[:] = 10
             rewards[-1] = 100
+        elif game_winner == 'chaos':
+            rewards[:] = -10
         else:
             raise ValueError
 

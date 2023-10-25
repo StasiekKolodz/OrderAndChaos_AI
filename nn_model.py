@@ -61,16 +61,16 @@ class Trainer:
 
     
             target[idx][torch.argmax(actions[idx]).item()] = Q_new      
-            # print(f"IDX: {idx}")
-            # print(f"pred: {pred[idx]}")
-            # print(f"next_pred: {next_pred[idx]}")
-            # print(f"board: {boards[idx]}")
-            # print(f"target: {target[idx]}")
-            # print(f"actions: {actions[idx].argmax()}")
-            # print(f"actions_q: {torch.argmax(pred[idx]).item()}")
-            # print(f"Q_new: {Q_new}")
-            # print(f"Q: {torch.max(pred[idx]).item()}")
-            # print(f"reward: {rewards[idx]}")
+            print(f"IDX: {idx}")
+            print(f"pred: {pred[idx]}")
+            print(f"next_pred: {next_pred[idx]}")
+            print(f"board: {boards[idx]}")
+            print(f"target: {target[idx]}")
+            print(f"actions: {actions[idx].argmax()}")
+            print(f"actions_q: {torch.argmax(pred[idx]).item()}")
+            print(f"Q_new: {Q_new}")
+            print(f"Q: {torch.max(pred[idx]).item()}")
+            print(f"reward: {rewards[idx]}")
         loss = self.criterion(target, pred)
         # print(f"loss: {loss.item()}")
      
