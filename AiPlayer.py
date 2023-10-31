@@ -200,13 +200,13 @@ class ChaosTrainer(PlayerTrainer):
 
         if illegal_move:
             rewards[:] = 1
-            rewards[-1] = -1000
+            rewards[-1] = -100
         elif game_winner == 'order':
-            rewards[:] = -10
-            rewards[-1] = -1000
+            rewards[:] = -1
+            rewards[-1] = -100
         elif game_winner == 'chaos':
-            rewards[:] = 10
-            rewards[-1] = 1000
+            rewards[:] = 1
+            rewards[-1] = 100
         else:
             raise ValueError
 
