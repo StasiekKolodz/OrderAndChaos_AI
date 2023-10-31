@@ -215,6 +215,9 @@ class TrainingGame():
 
             self.order_player.train(winner, round_number, self.order_illegal_move)
             self.chaos_player.train(winner, round_number, self.chaos_illegal_move)
+
+
+            
         self.chaos_player.save_model("chaos_model")
         print("Training session finished")
 
@@ -231,9 +234,11 @@ class TrainingGame():
         while self.should_game_run():
             round_number += 1
             self.play_round()
-        if self.game_number%500 == 0:
+        if self.game_number%10000 == 0:
             self.board.board_print()
-            self.win_meter.print_stats()
+            # self.win_meter.print_stats()
+            self.chaos_player.save_model("chaos_model_autosave")
+            self.win_meter.save("stats_autosave.pth")
             
         winner = self.check_winner()
         return winner, round_number
