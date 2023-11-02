@@ -192,10 +192,10 @@ class TrainingGame():
         self.order_illegal_move = False
         self.chaos_illegal_move = False
 
-        # self.order_player = OrderTrainer()
         self.order_player = RandomTrainer("random", "order")
         self.chaos_player = ChaosTrainer()
-        # self.chaos_player = RandomTrainer("random", "chaos")
+
+        # self.chaos_player.load_model("./model/chaos_model_autosave.pth")
 
         self.board = Board()
         self.board_combinations = BoardCombinations()

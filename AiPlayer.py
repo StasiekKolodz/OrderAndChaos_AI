@@ -58,7 +58,9 @@ class AiPlayer(PcRandomPlayer):
             return 'O'
 
     def load_model(self, path):
+        print(f"Loading model from {path}")
         self.model.load_state_dict(torch.load(path))
+        print("Model loaded")
 
     def generate_move(self, board_combinations):
         rand_val = random.rand()
@@ -199,14 +201,14 @@ class ChaosTrainer(PlayerTrainer):
         rewards = torch.zeros(moves_number)
 
         if illegal_move:
-            rewards[:] = 1
-            rewards[-1] = -100
+            rewards[:] = 0.1
+            rewards[-1] = -20
         elif game_winner == 'order':
-            rewards[:] = -1
-            rewards[-1] = -100
+            rewards[:] = 0.1
+            rewards[-1] = -15
         elif game_winner == 'chaos':
-            rewards[:] = 1
-            rewards[-1] = 100
+            rewards[:] = 0.1
+            rewards[-1] = 15
         else:
             raise ValueError
 
