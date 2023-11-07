@@ -11,12 +11,12 @@ class Network(nn.Module):
         every field (36) and every sign on that field(36*2=72)
 
         Firstly all fields and x sign next all fields and o sign"""
-        self.conv1 = nn.Conv2d(in_channels=1, out_channels=25, kernel_size=(3, 3), padding=(1, 1))
-        self.conv2 = nn.Conv2d(in_channels=25, out_channels=50, kernel_size=(3, 3), padding=(1, 1))
-        self.lin1 = nn.Linear(900, 72)
+        self.conv1 = nn.Conv2d(in_channels=1, out_channels=4, kernel_size=(3, 3), padding=(1, 1))
+        # self.conv2 = nn.Conv2d(in_channels=25, out_channels=50, kernel_size=(3, 3), padding=(1, 1))
+        self.lin1 = nn.Linear(144, 72)
         self.relu = nn.ReLU()
         # self.b_norm = nn.BatchNorm1d(50)
-        self.lin2 = nn.Linear(50, 72)
+        # self.lin2 = nn.Linear(50, 72)
 
         
 
