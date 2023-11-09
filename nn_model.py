@@ -44,7 +44,7 @@ class Network(nn.Module):
 
 
 class Trainer:
-    def __init__(self, model, lr=0.001, gamma=0.9):
+    def __init__(self, model, lr=0.0001, gamma=0.9):
         self.lr = lr
         self.gamma = gamma
         self.model = model
