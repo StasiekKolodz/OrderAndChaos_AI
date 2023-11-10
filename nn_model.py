@@ -13,7 +13,7 @@ class Network(nn.Module):
         Firstly all fields and x sign next all fields and o sign"""
         self.conv1 = nn.Conv2d(in_channels=1, out_channels=10, kernel_size=(3, 3), padding=(1, 1))
         self.conv2 = nn.Conv2d(in_channels=10, out_channels=20, kernel_size=(3, 3), padding=(1, 1))
-        self.lin1 = nn.Linear(360, 72)
+        self.lin1 = nn.Linear(720, 72)
         self.relu = nn.ReLU()
         # self.b_norm = nn.BatchNorm1d(50)
         self.lin2 = nn.Linear(50, 72)
@@ -23,7 +23,8 @@ class Network(nn.Module):
     def forward(self, x):
         x = self.conv1(x)
         x = self.relu(x)
-        # x = self.conv2(x)
+        x = self.conv2(x)
+        x = self.relu(x)
         # x = self.relu(x)
         x = torch.flatten(x,1)
         # print(f"SHAPE: {x.shape}")
