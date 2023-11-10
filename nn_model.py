@@ -11,12 +11,12 @@ class Network(nn.Module):
         every field (36) and every sign on that field(36*2=72)
 
         Firstly all fields and x sign next all fields and o sign"""
-        self.conv1 = nn.Conv2d(in_channels=1, out_channels=6, kernel_size=(3, 3), padding=(1, 1))
-        # self.conv2 = nn.Conv2d(in_channels=25, out_channels=50, kernel_size=(3, 3), padding=(1, 1))
-        self.lin1 = nn.Linear(216, 72)
+        self.conv1 = nn.Conv2d(in_channels=1, out_channels=10, kernel_size=(3, 3), padding=(1, 1))
+        self.conv2 = nn.Conv2d(in_channels=10, out_channels=20, kernel_size=(3, 3), padding=(1, 1))
+        self.lin1 = nn.Linear(360, 72)
         self.relu = nn.ReLU()
         # self.b_norm = nn.BatchNorm1d(50)
-        # self.lin2 = nn.Linear(50, 72)
+        self.lin2 = nn.Linear(50, 72)
 
         
 
@@ -44,7 +44,7 @@ class Network(nn.Module):
 
 
 class Trainer:
-    def __init__(self, model, lr=1e-4, gamma=0.9):
+    def __init__(self, model, lr=0.0001, gamma=0.9):
         self.lr = lr
         self.gamma = gamma
         self.model = model
@@ -60,26 +60,25 @@ class Trainer:
         next_pred = self.model(next_boards)
         target = pred.clone()
         num_samples = len(boards)
-        with torch.no_grad():
-            for idx in range(num_samples):
+        for idx in range(num_samples):
 
-                if idx != num_samples-1:
-                    Q_new = rewards[idx] + self.gamma * torch.max(next_pred[idx]).item()
-                else:
-                    Q_new = rewards[idx]
+            if idx != num_samples-1:
+                Q_new = rewards[idx] + self.gamma * torch.max(next_pred[idx]).item()
+            else:
+                Q_new = rewards[idx]
 
     
-                target[idx][torch.argmax(actions[idx]).item()] = Q_new      
-                # print(f"IDX: {idx}")
-                # print(f"pred: {pred[idx]}")
-                # # print(f"next_pred: {next_pred[idx]}")
-                # # print(f"board: {boards[idx]}")
-                # print(f"target: {target[idx]}")
-                # # print(f"actions: {actions[idx].argmax()}")
-                # # print(f"actions_q: {torch.argmax(pred[idx]).item()}")
-                # print(f"Q_new: {Q_new}")
-                # print(f"Q: {torch.max(pred[idx]).item()}")
-                # print(f"reward: {rewards[idx]}")
+            target[idx][torch.argmax(actions[idx]).item()] = Q_new      
+            # print(f"IDX: {idx}")
+            # print(f"pred: {pred[idx]}")
+            # # print(f"next_pred: {next_pred[idx]}")
+            # # print(f"board: {boards[idx]}")
+            # print(f"target: {target[idx]}")
+            # # print(f"actions: {actions[idx].argmax()}")
+            # # print(f"actions_q: {torch.argmax(pred[idx]).item()}")
+            # print(f"Q_new: {Q_new}")
+            # print(f"Q: {torch.max(pred[idx]).item()}")
+            # print(f"reward: {rewards[idx]}")
         loss = self.criterion(target, pred)
         # print(f"loss: {loss.item()}")
      
