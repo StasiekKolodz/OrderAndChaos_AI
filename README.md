@@ -17,3 +17,8 @@ The reinforcement learning pipeline is already implemented (see AiPlayer.py), bu
 ```bash
 python3 order_and_chaos_main.py
 ```
+## Run AI player Training
+
+```bash
+python3 train.py
+```
