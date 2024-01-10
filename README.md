@@ -1,5 +1,5 @@
 # Order and Chaos
-Board game runs in the terminal. To see more details check [Dokumentacja użytkownika](./Dokumentacja użytkownika chaos and order.docx) (only in polish)
+Board game runs in the terminal. To see more details check [Dokumentacja użytkownika](./Dokumentacja_użytkownika_chaos_and_order.docx) (only in polish)
 Possible opponents: \
 -Other player \
 -Random player \
